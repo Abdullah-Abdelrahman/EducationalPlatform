@@ -7,16 +7,12 @@
       "RelativeMoniker": "D:0:0:{0000D7EB-4301-4570-8A4B-DC8C7F5FD6C7}|EducationalPlatform.Api\\EducationalPlatform.Api.csproj|solutionrelative:educationalplatform.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0000D7EB-4301-4570-8A4B-DC8C7F5FD6C7}|EducationalPlatform.Api\\EducationalPlatform.Api.csproj|e:\\all_of_my_projrcts\\educationalplatform\\educationalplatform.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{0000D7EB-4301-4570-8A4B-DC8C7F5FD6C7}|EducationalPlatform.Api\\EducationalPlatform.Api.csproj|solutionrelative:educationalplatform.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{DF06F8B0-9754-453B-B4D8-A356F4D90C7A}|EducationalPlatform.Data\\EducationalPlatform.Data.csproj|e:\\all_of_my_projrcts\\educationalplatform\\educationalplatform.data\\entities\\answer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF06F8B0-9754-453B-B4D8-A356F4D90C7A}|EducationalPlatform.Data\\EducationalPlatform.Data.csproj|solutionrelative:educationalplatform.data\\entities\\answer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0000D7EB-4301-4570-8A4B-DC8C7F5FD6C7}|EducationalPlatform.Api\\EducationalPlatform.Api.csproj|e:\\all_of_my_projrcts\\educationalplatform\\educationalplatform.api\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0000D7EB-4301-4570-8A4B-DC8C7F5FD6C7}|EducationalPlatform.Api\\EducationalPlatform.Api.csproj|solutionrelative:educationalplatform.api\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4A60A851-90E8-4270-AFF3-451BBD8779C2}|EducationalPlatform.Core\\EducationalPlatform.Core.csproj|e:\\all_of_my_projrcts\\educationalplatform\\educationalplatform.core\\features\\authentication\\commands\\handlers\\authenticationcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4A60A851-90E8-4270-AFF3-451BBD8779C2}|EducationalPlatform.Core\\EducationalPlatform.Core.csproj|solutionrelative:educationalplatform.core\\features\\authentication\\commands\\handlers\\authenticationcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,40 +34,29 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "E:\\All_of_my_projrcts\\EducationalPlatform\\EducationalPlatform.Api\\appsettings.json",
-              "RelativeDocumentMoniker": "EducationalPlatform.Api\\appsettings.json",
-              "ToolTip": "E:\\All_of_my_projrcts\\EducationalPlatform\\EducationalPlatform.Api\\appsettings.json",
-              "RelativeToolTip": "EducationalPlatform.Api\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAQAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-09-28T15:14:28.272Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "E:\\All_of_my_projrcts\\EducationalPlatform\\EducationalPlatform.Api\\Program.cs",
               "RelativeDocumentMoniker": "EducationalPlatform.Api\\Program.cs",
               "ToolTip": "E:\\All_of_my_projrcts\\EducationalPlatform\\EducationalPlatform.Api\\Program.cs",
               "RelativeToolTip": "EducationalPlatform.Api\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEsAAAAeAAAA",
+              "ViewState": "AQIAAEUAAAAAAAAAAAA0wGsAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-28T15:06:32.687Z",
+              "WhenOpened": "2024-09-29T14:50:28.136Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AuthenticationCommandHandler.cs",
-              "DocumentMoniker": "E:\\All_of_my_projrcts\\EducationalPlatform\\EducationalPlatform.Core\\Features\\Authentication\\Commands\\Handlers\\AuthenticationCommandHandler.cs",
-              "RelativeDocumentMoniker": "EducationalPlatform.Core\\Features\\Authentication\\Commands\\Handlers\\AuthenticationCommandHandler.cs",
-              "ToolTip": "E:\\All_of_my_projrcts\\EducationalPlatform\\EducationalPlatform.Core\\Features\\Authentication\\Commands\\Handlers\\AuthenticationCommandHandler.cs",
-              "RelativeToolTip": "EducationalPlatform.Core\\Features\\Authentication\\Commands\\Handlers\\AuthenticationCommandHandler.cs",
-              "ViewState": "AQIAABcAAAAAAAAAAAA0wDUAAAAxAAAA",
+              "DocumentIndex": 1,
+              "Title": "Answer.cs",
+              "DocumentMoniker": "E:\\All_of_my_projrcts\\EducationalPlatform\\EducationalPlatform.Data\\Entities\\Answer.cs",
+              "RelativeDocumentMoniker": "EducationalPlatform.Data\\Entities\\Answer.cs",
+              "ToolTip": "E:\\All_of_my_projrcts\\EducationalPlatform\\EducationalPlatform.Data\\Entities\\Answer.cs",
+              "RelativeToolTip": "EducationalPlatform.Data\\Entities\\Answer.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-28T12:49:36.863Z"
+              "WhenOpened": "2024-09-29T13:07:46.95Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -83,7 +68,8 @@
               "RelativeToolTip": "EducationalPlatform.Api\\Controllers\\AuthenticationController.cs",
               "ViewState": "AQIAAAYAAAAAAAAAAAAAAA4AAAAzAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-28T12:48:12.424Z"
+              "WhenOpened": "2024-09-28T12:48:12.424Z",
+              "EditorCaption": ""
             }
           ]
         }

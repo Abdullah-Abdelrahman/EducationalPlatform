@@ -105,8 +105,8 @@ namespace EducationalPlatform.Api
             });
 
 
-
-
+            //Enable All
+            builder.Services.AddCors();
 
             var app = builder.Build();
 
@@ -117,6 +117,9 @@ namespace EducationalPlatform.Api
                 app.UseSwaggerUI();
             }
             app.UseMiddleware<ErrorHandlerMiddleware>();
+
+
+            app.UseCors("MyPolicy");
             app.UseAuthentication();
             app.UseAuthorization();
 

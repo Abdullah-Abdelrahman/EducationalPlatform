@@ -157,3 +157,4 @@ E:\All_of_my_projrcts\EducationalPlatform\EducationalPlatform.Api\bin\Debug\net8
 E:\All_of_my_projrcts\EducationalPlatform\EducationalPlatform.Api\bin\Debug\net8.0\FluentValidation.DependencyInjectionExtensions.dll
 E:\All_of_my_projrcts\EducationalPlatform\EducationalPlatform.Api\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 E:\All_of_my_projrcts\EducationalPlatform\EducationalPlatform.Api\bin\Debug\net8.0\Swashbuckle.AspNetCore.Annotations.dll
+E:\All_of_my_projrcts\EducationalPlatform\EducationalPlatform.Api\obj\Debug\net8.0\EducationalPlatform.Api.sourcelink.json
