@@ -15,3 +15,4 @@ E:\All_of_my_projrcts\EducationalPlatform\EducationalPlatform.Infrastructure\obj
 E:\All_of_my_projrcts\EducationalPlatform\EducationalPlatform.Infrastructure\obj\Debug\net8.0\EducationalPlatform.Infrastructure.pdb
 E:\All_of_my_projrcts\EducationalPlatform\EducationalPlatform.Infrastructure\obj\Debug\net8.0\EducationalPlatform.Infrastructure.genruntimeconfig.cache
 E:\All_of_my_projrcts\EducationalPlatform\EducationalPlatform.Infrastructure\obj\Debug\net8.0\ref\EducationalPlatform.Infrastructure.dll
+E:\All_of_my_projrcts\EducationalPlatform\EducationalPlatform.Infrastructure\obj\Debug\net8.0\EducationalPlatform.Infrastructure.sourcelink.json

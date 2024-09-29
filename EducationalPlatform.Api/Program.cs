@@ -106,7 +106,16 @@ namespace EducationalPlatform.Api
 
 
             //Enable All
-            builder.Services.AddCors();
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("MyPolicy", builder =>
+                {
+                    builder.AllowAnyOrigin()    // Allow all origins
+                           .AllowAnyMethod()    // Allow all HTTP methods
+                           .AllowAnyHeader();   // Allow all headers
+                });
+            });
+
 
             var app = builder.Build();
 

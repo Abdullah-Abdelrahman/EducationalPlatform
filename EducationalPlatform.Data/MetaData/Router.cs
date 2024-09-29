@@ -57,5 +57,22 @@
 
 
         }
+
+        public static class AuthorizationRouter
+        {
+            public const string prefix = Rule + "Authorization/";
+
+            public const string GetList = prefix + "List";
+
+            public const string GetById = prefix + "{Id}";
+
+            public const string Create = prefix + "Create";
+
+            public const string Edit = prefix + "Edit";
+
+            public const string Delete = prefix + "Delete/{Id}";
+
+
+        }
     }
 }

@@ -17,3 +17,4 @@ E:\All_of_my_projrcts\EducationalPlatform\EducationalPlatform.Core\obj\Debug\net
 E:\All_of_my_projrcts\EducationalPlatform\EducationalPlatform.Core\obj\Debug\net8.0\refint\EducationalPlatform.Core.dll
 E:\All_of_my_projrcts\EducationalPlatform\EducationalPlatform.Core\obj\Debug\net8.0\EducationalPlatform.Core.pdb
 E:\All_of_my_projrcts\EducationalPlatform\EducationalPlatform.Core\obj\Debug\net8.0\ref\EducationalPlatform.Core.dll
+E:\All_of_my_projrcts\EducationalPlatform\EducationalPlatform.Core\obj\Debug\net8.0\EducationalPlatform.Core.sourcelink.json

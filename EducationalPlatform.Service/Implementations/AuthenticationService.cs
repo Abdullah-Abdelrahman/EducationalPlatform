@@ -23,6 +23,7 @@ namespace EducationalPlatform.Service.Implementations
             };
 
 
+
             SecurityKey securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:securityKey"]));
             var Jwttoken = new JwtSecurityToken(_configuration["JWT:Issuer"], _configuration["JWT:Audience"],
                 claims,
