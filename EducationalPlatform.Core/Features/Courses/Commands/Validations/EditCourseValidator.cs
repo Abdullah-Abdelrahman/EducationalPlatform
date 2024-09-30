@@ -14,10 +14,10 @@ namespace EducationalPlatform.Core.Features.Courses.Commands.Validations
         public void ValidationRules()
         {
 
-            RuleFor(x => x.Id).NotEmpty().WithMessage("Id must has value");
+            RuleFor(x => x.Id).NotNull().WithMessage("Id must not be null").NotEmpty().WithMessage("Id must has value");
 
-            RuleFor(x => x.Name).NotEmpty().WithMessage("Name must has value");
 
+            RuleFor(x => x.Name).NotNull().WithMessage("Name must not be null").NotEmpty().WithMessage("Name must has value");
 
         }
     }

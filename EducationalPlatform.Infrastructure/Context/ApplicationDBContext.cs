@@ -2,21 +2,16 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EducationalPlatform.Infrastructure.Data
 {
-    public class ApplicationDBContext:IdentityDbContext<AppUser>
-    {   
+    public class ApplicationDBContext : IdentityDbContext<AppUser>
+    {
 
 
         public ApplicationDBContext() { }
 
-        public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options): base(options)
+        public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options) : base(options)
         {
 
 
@@ -58,8 +53,8 @@ namespace EducationalPlatform.Infrastructure.Data
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<AppUser>(entity =>
             {
-                
-        
+
+
                 entity.HasMany(u => u.Enrollments)
                       .WithOne(e => e.User)
                       .HasForeignKey(e => e.UserId);
@@ -77,7 +72,7 @@ namespace EducationalPlatform.Infrastructure.Data
 
 
 
-           
+
 
 
             /////////////////RELATIONS//////////////
@@ -133,6 +128,14 @@ namespace EducationalPlatform.Infrastructure.Data
             modelBuilder.Entity<TrueOrFalseQuestion>()
               .HasMany(q => q.answerList)
               .WithMany(qu => qu.TrueOrFalseQuestions).UsingEntity(e => e.ToTable("TrueOrFalseQuestionAnswer"));
+
+
+            modelBuilder.Entity<IdentityRole>().HasData(
+                new IdentityRole() { Name = "Admin" },
+                new IdentityRole() { Name = "User" }
+
+
+                );
 
         }
 

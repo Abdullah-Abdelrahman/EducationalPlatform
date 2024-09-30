@@ -27,7 +27,7 @@ namespace EducationalPlatform.Service.Implementations
             else
             {
 
-                _courseRepository.AddAsync(course);
+                await _courseRepository.AddAsync(course);
                 return "Success";
             }
 

@@ -348,6 +348,18 @@ namespace EducationalPlatform.Infrastructure.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "4fb307df-48b0-4cd9-ac13-18081aad1033",
+                            Name = "Admin"
+                        },
+                        new
+                        {
+                            Id = "9524be54-e4a8-42cd-9719-eeba3f244391",
+                            Name = "User"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
