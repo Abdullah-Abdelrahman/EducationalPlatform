@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using EducationalPlatform.Data.Dto;
+using EducationalPlatform.Data.Entities;
+using Microsoft.AspNetCore.Identity;
 
 namespace EducationalPlatform.Service.Abstracts
 {
@@ -13,5 +15,11 @@ namespace EducationalPlatform.Service.Abstracts
         public Task<IdentityRole> GetRoleById(string id);
 
         public Task<string> DeleteRoleAsync(IdentityRole role);
+
+        public Task<ManageUserRolesResult> ManageUserRolesData(AppUser user);
+
+        public Task<string> UpdateUserRoles(UpdateUserRolesRequest request);
+
+        public Task<ManageUserClaimsResult> ManageUserClaimData(AppUser user);
     }
 }

@@ -72,6 +72,14 @@
 
             public const string Delete = prefix + "Role/Delete/{Id}";
 
+            ////
+            ///
+            public const string ManageUserRoles = prefix + "ManageUserRolesQuery/{Id}";
+
+            public const string UpdateUserRoles = prefix + "UpdateUserRoles";
+
+            public const string ManageUserClaims = prefix + "ManageUserClaims/{Id}";
+
 
         }
 

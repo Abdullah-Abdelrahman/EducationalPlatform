@@ -131,8 +131,8 @@ namespace EducationalPlatform.Infrastructure.Data
 
 
             modelBuilder.Entity<IdentityRole>().HasData(
-                new IdentityRole() { Name = "Admin" },
-                new IdentityRole() { Name = "User" }
+                new IdentityRole() { Name = "Admin", NormalizedName = "ADMIN" },
+                new IdentityRole() { Name = "User", NormalizedName = "USER" }
 
 
                 );

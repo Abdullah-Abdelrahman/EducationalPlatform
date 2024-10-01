@@ -9,7 +9,9 @@ namespace EducationalPlatform.Core.Features.Authorization.Commands.Handlers
     public class RoleCommandHandler : ResponseHandler,
          IRequestHandler<AddRoleCommand, Response<string>>,
         IRequestHandler<EditRoleCommand, Response<string>>,
-        IRequestHandler<DeleteRoleCommand, Response<string>>
+        IRequestHandler<DeleteRoleCommand, Response<string>>,
+        IRequestHandler<UpdateUserRolesCommand, Response<string>>
+
     {
         private readonly IMapper _mapper;
         private readonly RoleManager<IdentityRole> _roleManager;
@@ -98,6 +100,20 @@ namespace EducationalPlatform.Core.Features.Authorization.Commands.Handlers
 
             }
 
+        }
+
+        public async Task<Response<string>> Handle(UpdateUserRolesCommand request, CancellationToken cancellationToken)
+        {
+            var result = await _authorizationService.UpdateUserRoles(request);
+
+            switch (result)
+            {
+                case "UserIsNull": return NotFound<string>("UserIsNull");
+                case "FailedToRemoveOldRoles": return BadRequest<string>("FailedToRemoveOldRoles");
+                case "FailedToAddNewRoles": return BadRequest<string>("FailedToAddNewRoles");
+                case "FailedToUpdateUserRoles": return BadRequest<string>("FailedToUpdateUserRoles");
+            }
+            return Success<string>("Success");
         }
     }
 }

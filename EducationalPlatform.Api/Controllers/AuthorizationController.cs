@@ -11,6 +11,7 @@ namespace EducationalPlatform.Api.Controllers
     public class AuthorizationController : AppControllerBase
     {
 
+        #region crud on role
 
         [HttpPost(Router.AuthorizationRouter.Create)]
         public async Task<IActionResult> CreateRole([FromForm] AddRoleCommand command)
@@ -53,6 +54,44 @@ namespace EducationalPlatform.Api.Controllers
 
             return NewResult(response);
         }
+        #endregion
+
+
+
+        [HttpGet(Router.AuthorizationRouter.ManageUserRoles)]
+        public async Task<IActionResult> ManageUserRoles([FromRoute] string Id)
+        {
+            var response = await Mediator.Send(new ManageUserRolesQuery(Id));
+
+            return Ok(response);
+        }
+
+
+
+        [HttpPost(Router.AuthorizationRouter.UpdateUserRoles)]
+        public async Task<IActionResult> UpdateUserRoles([FromBody] UpdateUserRolesCommand request)
+        {
+            var response = await Mediator.Send(request);
+
+            return Ok(response);
+        }
+
+
+        [HttpGet(Router.AuthorizationRouter.ManageUserClaims)]
+        public async Task<IActionResult> ManageUserClaims([FromRoute] string Id)
+        {
+            var response = await Mediator.
+                Send(new ManageUserClaimsQuery(Id));
+            return NewResult(response);
+        }
+
+
+
+
+
+
+
+
 
 
 

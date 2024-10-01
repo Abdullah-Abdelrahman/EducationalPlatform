@@ -1,4 +1,7 @@
-﻿using EducationalPlatform.Data.Entities;
+﻿using EducationalPlatform.Data.Dto;
+using EducationalPlatform.Data.Entities;
+using EducationalPlatform.Data.Helpers;
+using EducationalPlatform.Infrastructure.Data;
 using EducationalPlatform.Service.Abstracts;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -9,11 +12,12 @@ namespace EducationalPlatform.Service.Implementations
     {
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<AppUser> _userManager;
-
-        public AuthorizationService(RoleManager<IdentityRole> roleManager, UserManager<AppUser> userManager)
+        private readonly ApplicationDBContext _dbContext;
+        public AuthorizationService(RoleManager<IdentityRole> roleManager, UserManager<AppUser> userManager, ApplicationDBContext dbContext)
         {
             _userManager = userManager;
             _roleManager = roleManager;
+            _dbContext = dbContext;
         }
 
         public async Task<string> DeleteRoleAsync(IdentityRole role)
@@ -72,5 +76,103 @@ namespace EducationalPlatform.Service.Implementations
                 return true;
             }
         }
+
+        public async Task<ManageUserRolesResult> ManageUserRolesData(AppUser user)
+        {
+            var response = new ManageUserRolesResult();
+            var rolesList = new List<Role>();
+            //Roles
+            var roles = await _roleManager.Roles.ToListAsync();
+            response.UserId = user.Id;
+            foreach (var role in roles)
+            {
+                var userrole = new Role();
+                userrole.RoleId = role.Id;
+                userrole.RoleName = role.Name;
+                if (await _userManager.IsInRoleAsync(user, role.Name))
+                {
+                    userrole.HasRole = true;
+                }
+                else
+                {
+                    userrole.HasRole = false;
+                }
+                rolesList.Add(userrole);
+            }
+            response.Roles = rolesList;
+            return response;
+        }
+
+
+
+
+        public async Task<string> UpdateUserRoles(UpdateUserRolesRequest request)
+        {
+            var transact = await _dbContext.Database.BeginTransactionAsync();
+            try
+            {
+                //Get User
+                var user = await _userManager.FindByIdAsync(request.UserId);
+                if (user == null)
+                {
+                    return "UserIsNull";
+                }
+                //get user Old Roles
+                var userRoles = await _userManager.GetRolesAsync(user);
+                //Delete OldRoles
+                if (userRoles != null)
+                {
+                    var removeResult = await _userManager.RemoveFromRolesAsync(user, userRoles);
+
+                    if (!removeResult.Succeeded)
+                        return "FailedToRemoveOldRoles";
+                }
+
+
+                var selectedRoles = request.Roles.Where(x => x.HasRole == true).Select(x => x.RoleName);
+
+                //Add the Roles HasRole=True
+                var addRolesresult = await _userManager.AddToRolesAsync(user, selectedRoles);
+                if (!addRolesresult.Succeeded)
+                    return "FailedToAddNewRoles";
+                await transact.CommitAsync();
+                //return Result
+                return "Success";
+            }
+            catch (Exception ex)
+            {
+                await transact.RollbackAsync();
+                return "FailedToUpdateUserRoles";
+            }
+        }
+
+
+        public async Task<ManageUserClaimsResult> ManageUserClaimData(AppUser user)
+        {
+            var response = new ManageUserClaimsResult();
+            var usercliamsList = new List<UserClaim>();
+            response.UserId = user.Id;
+            //Get USer Claims
+            var userClaims = await _userManager.GetClaimsAsync(user); //edit
+                                                                      //create edit get print
+            foreach (var claim in ClaimsStore.claims)
+            {
+                var userclaim = new UserClaim();
+                userclaim.Type = claim.Type;
+                if (userClaims.Any(x => x.Type == claim.Type))
+                {
+                    userclaim.Value = true;
+                }
+                else
+                {
+                    userclaim.Value = false;
+                }
+                usercliamsList.Add(userclaim);
+            }
+            response.userClaims = usercliamsList;
+            //return Result
+            return response;
+        }
+
     }
 }

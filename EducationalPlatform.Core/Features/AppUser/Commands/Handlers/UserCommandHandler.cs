@@ -53,8 +53,17 @@ namespace EducationalPlatform.Core.Features.AppUser.Commands.Handlers
 
                     if (result == IdentityResult.Success)
                     {
-                        await _userManager.AddToRoleAsync(user, "User");
-                        return Created<string>("User created Successfuly");
+                        var addRoleResult = await _userManager.AddToRoleAsync(user, "User");
+
+                        if (addRoleResult == IdentityResult.Success)
+                        {
+                            return Created<string>("User created Successfuly and added to [user] role");
+
+                        }
+                        else
+                        {
+                            return Created<string>("User created Successfuly but not added to [user] role");
+                        }
                     }
                     else
                     {
