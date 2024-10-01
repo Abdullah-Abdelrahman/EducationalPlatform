@@ -53,6 +53,7 @@ namespace EducationalPlatform.Core.Features.AppUser.Commands.Handlers
 
                     if (result == IdentityResult.Success)
                     {
+                        await _userManager.AddToRoleAsync(user, "User");
                         return Created<string>("User created Successfuly");
                     }
                     else

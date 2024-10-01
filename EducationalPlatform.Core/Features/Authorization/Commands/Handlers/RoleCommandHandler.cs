@@ -1,22 +1,28 @@
 ﻿using AutoMapper;
 using EducationalPlatform.Core.Bases;
 using EducationalPlatform.Core.Features.Authorization.Commands.Models;
+using EducationalPlatform.Service.Abstracts;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 namespace EducationalPlatform.Core.Features.Authorization.Commands.Handlers
 {
     public class RoleCommandHandler : ResponseHandler,
-         IRequestHandler<AddRoleCommand, Response<string>>
+         IRequestHandler<AddRoleCommand, Response<string>>,
+        IRequestHandler<EditRoleCommand, Response<string>>,
+        IRequestHandler<DeleteRoleCommand, Response<string>>
     {
         private readonly IMapper _mapper;
         private readonly RoleManager<IdentityRole> _roleManager;
 
+        private readonly IAuthorizationService _authorizationService;
         #region ctor
-        public RoleCommandHandler(IMapper mapper, RoleManager<IdentityRole> roleManager)
+        public RoleCommandHandler(IMapper mapper,
+            RoleManager<IdentityRole> roleManager,
+            IAuthorizationService authorizationService)
         {
             _roleManager = roleManager;
             _mapper = mapper;
-
+            _authorizationService = authorizationService;
         }
         #endregion
 
@@ -38,6 +44,60 @@ namespace EducationalPlatform.Core.Features.Authorization.Commands.Handlers
             {
                 return BadRequest<string>("Somthing Bad happened");
             }
+        }
+
+        public async Task<Response<string>> Handle(EditRoleCommand request, CancellationToken cancellationToken)
+        {
+            var role = await _roleManager.FindByIdAsync(request.RoleId);
+
+            if (role == null)
+            {
+                return NotFound<string>($"there is no role with id ={request.RoleId}");
+            }
+            else
+            {
+                var result = await _roleManager.UpdateAsync(role);
+
+                if (result == IdentityResult.Success)
+                {
+                    return Success<string>("Updated Successfuly");
+                }
+                else
+                {
+                    return BadRequest<string>("Somthing Bad happened");
+                }
+            }
+        }
+
+        public async Task<Response<string>> Handle(DeleteRoleCommand request, CancellationToken cancellationToken)
+        {
+            var role = await _roleManager.FindByIdAsync(request.RoleId);
+
+            if (role == null)
+            {
+                return NotFound<string>($"there is no role with id ={request.RoleId}");
+            }
+            else
+            {
+                var result = await _authorizationService.DeleteRoleAsync(role);
+
+                if (result == "Success")
+                {
+                    return Success<string>("Deleted Successfuly");
+                }
+                else if (result == "Failed")
+                {
+                    return BadRequest<string>("Somthing Bad happened");
+                }
+                else
+                {
+                    return BadRequest<string>();
+
+                }
+
+
+            }
+
         }
     }
 }

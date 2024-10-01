@@ -62,15 +62,15 @@
         {
             public const string prefix = Rule + "Authorization/";
 
-            public const string GetList = prefix + "List";
+            public const string GetList = prefix + "Role/List";
 
-            public const string GetById = prefix + "{Id}";
+            public const string GetById = prefix + "Role/{Id}";
 
-            public const string Create = prefix + "Create";
+            public const string Create = prefix + "Role/Create";
 
-            public const string Edit = prefix + "Edit";
+            public const string Edit = prefix + "Role/Edit";
 
-            public const string Delete = prefix + "Delete/{Id}";
+            public const string Delete = prefix + "Role/Delete/{Id}";
 
 
         }

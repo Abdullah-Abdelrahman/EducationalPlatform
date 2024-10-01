@@ -6,10 +6,12 @@ namespace EducationalPlatform.Service.Abstracts
     {
         public Task<bool> IsRoleExistByName(string roleName);
 
-        public Task<bool> IsRoleExistById(int roleId);
+        public Task<bool> IsRoleExistById(string roleId);
 
         public Task<List<IdentityRole>> GetRolesList();
 
-        public Task<IdentityRole> GetRoleById(int id);
+        public Task<IdentityRole> GetRoleById(string id);
+
+        public Task<string> DeleteRoleAsync(IdentityRole role);
     }
 }
