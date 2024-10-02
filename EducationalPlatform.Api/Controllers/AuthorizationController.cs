@@ -86,7 +86,12 @@ namespace EducationalPlatform.Api.Controllers
         }
 
 
-
+        [HttpPut(Router.AuthorizationRouter.UpdateUserClaims)]
+        public async Task<IActionResult> UpdateUserClaims([FromBody] UpdateUserClaimsCommand command)
+        {
+            var response = await Mediator.Send(command);
+            return NewResult(response);
+        }
 
 
 

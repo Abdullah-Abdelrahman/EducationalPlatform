@@ -29,7 +29,11 @@ namespace EducationalPlatform.Service.Implementations
             {
                 claims.Add(new Claim(ClaimTypes.Role, role));
             }
-
+            var userclaims = await _userManager.GetClaimsAsync(user);
+            foreach (var claim in userclaims)
+            {
+                claims.Add(claim);
+            }
 
             SecurityKey securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:securityKey"]));
             var Jwttoken = new JwtSecurityToken(_configuration["JWT:Issuer"], _configuration["JWT:Audience"],

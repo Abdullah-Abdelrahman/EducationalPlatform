@@ -2,6 +2,7 @@
 using EducationalPlatform.Core.Features.Courses.Commands.Models;
 using EducationalPlatform.Core.Features.Courses.Queries.Models;
 using EducationalPlatform.Data.MetaData;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EducationalPlatform.Api.Controllers
@@ -30,6 +31,7 @@ namespace EducationalPlatform.Api.Controllers
 
 
         [HttpPost(Router.CourseRouter.Create)]
+        [Authorize(Policy = "CreateCourse")]
         public async Task<IActionResult> CreateCourse([FromBody] AddCourseCommand command)
         {
             var response = await Mediator.Send(command);

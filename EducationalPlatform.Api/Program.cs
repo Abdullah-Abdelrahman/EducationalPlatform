@@ -117,6 +117,18 @@ namespace EducationalPlatform.Api
             });
 
 
+            //My Policy
+            builder.Services.AddAuthorization(option =>
+            {
+                option.AddPolicy("CreateCourse", policy =>
+                {
+                    policy.RequireClaim("Create Course", "true");
+                });
+
+            });
+
+
+            //Build
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -130,6 +142,7 @@ namespace EducationalPlatform.Api
 
             app.UseCors("MyPolicy");
             app.UseAuthentication();
+
             app.UseAuthorization();
 
 

@@ -80,7 +80,7 @@
 
             public const string ManageUserClaims = prefix + "ManageUserClaims/{Id}";
 
-
+            public const string UpdateUserClaims = prefix + "UpdateUserClaims";
         }
 
 

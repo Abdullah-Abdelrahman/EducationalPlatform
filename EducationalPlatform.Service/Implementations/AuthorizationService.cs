@@ -5,6 +5,7 @@ using EducationalPlatform.Infrastructure.Data;
 using EducationalPlatform.Service.Abstracts;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace EducationalPlatform.Service.Implementations
 {
@@ -172,6 +173,39 @@ namespace EducationalPlatform.Service.Implementations
             response.userClaims = usercliamsList;
             //return Result
             return response;
+        }
+
+
+
+        public async Task<string> UpdateUserClaims(UpdateUserClaimsRequest request)
+        {
+            var transact = await _dbContext.Database.BeginTransactionAsync();
+            try
+            {
+                var user = await _userManager.FindByIdAsync(request.UserId.ToString());
+                if (user == null)
+                {
+                    return "UserIsNull";
+                }
+                //remove old Claims
+                var userClaims = await _userManager.GetClaimsAsync(user);
+                var removeClaimsResult = await _userManager.RemoveClaimsAsync(user, userClaims);
+                if (!removeClaimsResult.Succeeded)
+                    return "FailedToRemoveOldClaims";
+                var claims = request.userClaims.Where(x => x.Value == true).Select(x => new Claim(x.Type, x.Value.ToString()));
+
+                var addUserClaimResult = await _userManager.AddClaimsAsync(user, claims);
+                if (!addUserClaimResult.Succeeded)
+                    return "FailedToAddNewClaims";
+
+                await transact.CommitAsync();
+                return "Success";
+            }
+            catch (Exception ex)
+            {
+                await transact.RollbackAsync();
+                return "FailedToUpdateClaims";
+            }
         }
 
     }

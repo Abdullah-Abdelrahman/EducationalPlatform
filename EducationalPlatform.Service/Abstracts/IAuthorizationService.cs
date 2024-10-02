@@ -21,5 +21,7 @@ namespace EducationalPlatform.Service.Abstracts
         public Task<string> UpdateUserRoles(UpdateUserRolesRequest request);
 
         public Task<ManageUserClaimsResult> ManageUserClaimData(AppUser user);
+
+        public Task<string> UpdateUserClaims(UpdateUserClaimsRequest request);
     }
 }
