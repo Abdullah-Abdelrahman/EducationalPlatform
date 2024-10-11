@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text.Json.Serialization;
 
 namespace EducationalPlatform.Data.Entities
 {
@@ -10,11 +6,12 @@ namespace EducationalPlatform.Data.Entities
     {
         public int AnswerId { get; set; }
 
-        public string AnswerText {  get; set; }
+        public string AnswerText { get; set; }
 
-
+        [JsonIgnore]
         public ICollection<ChooseQuestion> ChooseQuestions { get; set; }
-       
+
+        [JsonIgnore]
         public ICollection<TrueOrFalseQuestion> TrueOrFalseQuestions { get; set; }
 
 

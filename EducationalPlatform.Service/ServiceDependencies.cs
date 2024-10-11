@@ -15,6 +15,7 @@ namespace EducationalPlatform.Service
             services.AddTransient<IAuthorizationService, AuthorizationService>();
 
             services.AddTransient<IAnswerService, AnswerService>();
+            services.AddTransient<IQuestionService, QuestionService>();
 
 
             return services;

@@ -100,5 +100,26 @@
 
 
         }
+
+
+
+
+        public static class QuestionRouter
+        {
+            public const string prefix = Rule + "Question/";
+
+            public const string GetList = prefix + "List";
+
+            public const string GetById = prefix + "{Id}";
+
+            public const string Create = prefix + "Create";
+
+            public const string Edit = prefix + "Edit";
+
+            public const string Delete = prefix + "Delete/{Id}";
+
+            public const string TypeList = prefix + "TypeList";
+
+        }
     }
 }

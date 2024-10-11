@@ -121,12 +121,12 @@ namespace EducationalPlatform.Infrastructure.Data
 
 
             modelBuilder.Entity<ChooseQuestion>()
-              .HasMany(q => q.answerList)
+              .HasMany(q => q.ChoiceList)
               .WithMany(qu => qu.ChooseQuestions)
               .UsingEntity(e => e.ToTable("ChooseQuestionAnswer"));
 
             modelBuilder.Entity<TrueOrFalseQuestion>()
-              .HasMany(q => q.answerList)
+              .HasMany(q => q.ChoiceList)
               .WithMany(qu => qu.TrueOrFalseQuestions).UsingEntity(e => e.ToTable("TrueOrFalseQuestionAnswer"));
 
 
