@@ -104,11 +104,32 @@ namespace EducationalPlatform.Infrastructure.Data
             //
 
 
+            // relation between Quiz and Question
 
             modelBuilder.Entity<Quiz>()
-                .HasMany(q => q.QuizQuestions)
-                .WithMany(qu => qu.Quizs)
-                .UsingEntity(e => e.ToTable("QuizQuestion"));
+                .HasMany(c => c.Questions)
+                .WithMany(co => co.Quizs)
+                .UsingEntity<QuizQuestion>(
+                   j => j
+                    .HasOne(cc => cc.Question)
+                    .WithMany(co => co.QuizQuestions)
+                    .HasForeignKey(cc => cc.QuizId),
+
+                     j => j
+                     .HasOne(cc => cc.Quiz)
+                    .WithMany(co => co.QuizQuestions)
+                    .HasForeignKey(cc => cc.QuestionId),
+
+                     j =>
+                     {
+                         j.HasKey(cc => new { cc.QuizId, cc.QuestionId });
+                     }
+
+                );
+
+            //
+
+
 
 
             modelBuilder.Entity<Assignment>()
@@ -125,9 +146,6 @@ namespace EducationalPlatform.Infrastructure.Data
               .WithMany(qu => qu.ChooseQuestions)
               .UsingEntity(e => e.ToTable("ChooseQuestionAnswer"));
 
-            modelBuilder.Entity<TrueOrFalseQuestion>()
-              .HasMany(q => q.ChoiceList)
-              .WithMany(qu => qu.TrueOrFalseQuestions).UsingEntity(e => e.ToTable("TrueOrFalseQuestionAnswer"));
 
 
             modelBuilder.Entity<IdentityRole>().HasData(
@@ -136,6 +154,12 @@ namespace EducationalPlatform.Infrastructure.Data
 
 
                 );
+
+            modelBuilder.Entity<Answer>().HasData(
+                new Answer() { AnswerId = 1, AnswerText = "True" },
+                new Answer() { AnswerId = 2, AnswerText = "False" }
+
+            );
 
         }
 

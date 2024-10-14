@@ -11,9 +11,12 @@ namespace EducationalPlatform.Service.Implementations
 
         private readonly IQuestionRepository _questionRepository;
 
-        public QuestionService(IQuestionRepository questionRepository)
+        private readonly IAnswerRepository _answerRepository;
+        public QuestionService(IQuestionRepository questionRepository,
+            IAnswerRepository answerRepository)
         {
             _questionRepository = questionRepository;
+            _answerRepository = answerRepository;
         }
         public async Task<string> AddQuestion(AddQuestionRequest request)
         {
@@ -57,13 +60,13 @@ namespace EducationalPlatform.Service.Implementations
                     return "CorrectAnswer must not be null";
                 }
 
-
                 var trueOrFalseQuestion = new TrueOrFalseQuestion()
                 {
                     QuestionText = request.QuestionText,
                     QuestionImage = request.QuestionImage,
                     CorrectAnswerId = (int)request.correctAnswerId,
-                    QuestionType = request.QuestionType
+                    QuestionType = request.QuestionType,
+
                 };
 
                 var result = await _questionRepository.AddTrueOrFalseQuestionAsync(trueOrFalseQuestion);

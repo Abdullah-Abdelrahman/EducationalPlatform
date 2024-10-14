@@ -121,5 +121,25 @@
             public const string TypeList = prefix + "TypeList";
 
         }
+
+
+        public static class ContentRouter
+        {
+            public const string prefix = Rule + "Content/";
+
+            public const string GetList = prefix + "List";
+
+            public const string GetGeneralContentById = prefix + "GeneralContent/" + "{Id}";
+
+            public const string CreateGeneralContent
+                = prefix + "GeneralContent/" + "Create";
+
+            public const string EditGeneralContent = prefix + "GeneralContent/" + "Edit";
+
+            public const string Delete = prefix + "Delete/{Id}";
+
+            public const string TypeList = prefix + "TypeList";
+
+        }
     }
 }

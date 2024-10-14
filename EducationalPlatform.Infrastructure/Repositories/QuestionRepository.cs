@@ -69,9 +69,9 @@ namespace EducationalPlatform.Infrastructure.Repositories
             }
             else if (Questiontype == "TrueOrFalse")
             {
-                var question = await _trueOrFalseQuestions.Include(x => x.ChoiceList).Where(x => x.QuestionId == id).FirstOrDefaultAsync();
+                var question = await _trueOrFalseQuestions.Where(x => x.QuestionId == id).FirstOrDefaultAsync();
 
-                ChoiceList.AddRange(question.ChoiceList);
+
                 return ChoiceList;
 
             }

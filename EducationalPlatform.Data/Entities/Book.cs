@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EducationalPlatform.Data.Entities
 {
     public class Book : Content
     {
-        public string File { get; set; } 
+        [NotMapped]
+        public IFormFile? File { get; set; }
+        public string PathName { get; set; }
     }
 
 }

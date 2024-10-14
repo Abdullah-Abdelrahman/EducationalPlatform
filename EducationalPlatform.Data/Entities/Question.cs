@@ -15,6 +15,7 @@ namespace EducationalPlatform.Data.Entities
         public string QuestionType { get; set; }
 
 
+        public virtual ICollection<QuizQuestion> QuizQuestions { get; set; }
 
         public ICollection<Quiz> Quizs { get; set; }
 
