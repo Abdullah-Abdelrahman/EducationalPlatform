@@ -23,6 +23,20 @@ namespace EducationalPlatform.Infrastructure.Repositories
             _chooseQuestions = dbContext.Set<ChooseQuestion>();
         }
 
+        public async Task<string> AddChooseQuestionAsync(ChooseQuestion question)
+        {
+            var result = await _chooseQuestions.AddAsync(question);
+            await _dbContext.SaveChangesAsync();
+            if (result == null)
+            {
+                return "Cant Add";
+            }
+            else
+            {
+                return "Success";
+            }
+        }
+
         public async Task<string> AddTrueOrFalseQuestionAsync(TrueOrFalseQuestion question)
         {
             var result = await _trueOrFalseQuestions.AddAsync(question);

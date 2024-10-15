@@ -11,6 +11,8 @@ namespace EducationalPlatform.Infrastructure.Abstracts
 
         public Task<string> AddTrueOrFalseQuestionAsync(TrueOrFalseQuestion question);
 
+        public Task<string> AddChooseQuestionAsync(ChooseQuestion question);
+
         public Task<List<Answer>> GetChoiceListAsyncFor(string Questiontype, int id);
 
         public Task<string> UpdateByTypeAsync(EditQuestionResult request);

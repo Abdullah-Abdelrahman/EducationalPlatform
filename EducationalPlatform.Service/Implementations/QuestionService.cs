@@ -86,7 +86,46 @@ namespace EducationalPlatform.Service.Implementations
             }
             else if (request.QuestionType == "Choose")
             {
-                return "Success";
+                if (request.correctAnswerId == null)
+                {
+                    return "CorrectAnswer must not be null";
+                }
+                if (request.answerListIds == null)
+                {
+                    return "answerListIds must not be null";
+                }
+
+                var answerList = new List<Answer>();
+
+                foreach (var id in request.answerListIds)
+                {
+                    answerList.Add(await _answerRepository.GetByIdAsync(id));
+                }
+
+                var chooseQuestion = new ChooseQuestion()
+                {
+                    QuestionText = request.QuestionText,
+                    QuestionImage = request.QuestionImage,
+                    CorrectAnswerId = (int)request.correctAnswerId,
+                    QuestionType = request.QuestionType,
+                    ChoiceList = answerList
+
+                };
+
+                var result = await _questionRepository.AddChooseQuestionAsync(chooseQuestion);
+
+                if (result == "Success")
+                {
+                    return "Success";
+                }
+                else if (result == "Cant Add")
+                {
+                    return "Cant Add";
+                }
+                else
+                {
+                    return "somthing bad Happened";
+                }
 
             }
             else

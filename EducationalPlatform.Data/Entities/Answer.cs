@@ -11,8 +11,7 @@ namespace EducationalPlatform.Data.Entities
         [JsonIgnore]
         public ICollection<ChooseQuestion> ChooseQuestions { get; set; }
 
-        [JsonIgnore]
-        public ICollection<TrueOrFalseQuestion> TrueOrFalseQuestions { get; set; }
+
 
 
     }
