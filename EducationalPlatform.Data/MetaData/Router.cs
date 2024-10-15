@@ -141,5 +141,25 @@
             public const string TypeList = prefix + "TypeList";
 
         }
+
+        public static class QuizRouter
+        {
+            public const string prefix = Rule + "Quiz/";
+
+            public const string GetList = prefix + "List";
+
+            public const string GetById = prefix + "{Id}";
+
+            public const string Create = prefix + "Create";
+
+            public const string Edit = prefix + "Edit";
+
+            public const string Delete = prefix + "Delete/{Id}";
+
+            public const string TypeList = prefix + "TypeList";
+
+        }
+
+
     }
 }

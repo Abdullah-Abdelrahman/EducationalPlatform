@@ -95,11 +95,33 @@ namespace EducationalPlatform.Service.Implementations
                     return "answerListIds must not be null";
                 }
 
+                int count = request.answerListIds.Count;
+
                 var answerList = new List<Answer>();
 
-                foreach (var id in request.answerListIds)
+                for (int i = 1; i <= 4; i++)
                 {
-                    answerList.Add(await _answerRepository.GetByIdAsync(id));
+                    if (i <= count)
+                    {
+                        answerList.Add(await _answerRepository.GetByIdAsync(request.answerListIds[i - 1]));
+
+                    }
+                    else
+                    {
+                        Random random = new Random();
+                        int answerCount = _answerRepository.GetTableNoTracking().Count();
+                        while (true)
+                        {
+                            int Rid = random.Next(1, answerCount + 1);
+                            if (!answerList.Any(x => x.AnswerId == Rid))
+                            {
+                                answerList.Add(await _answerRepository.GetByIdAsync(Rid));
+                                break;
+                            }
+
+                        }
+
+                    }
                 }
 
                 var chooseQuestion = new ChooseQuestion()

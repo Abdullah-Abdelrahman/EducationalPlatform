@@ -14,7 +14,7 @@
         //
 
         //for choose qustions
-        public ICollection<int>? answerListIds { get; set; }
+        public List<int>? answerListIds { get; set; }
         //
     }
 }
