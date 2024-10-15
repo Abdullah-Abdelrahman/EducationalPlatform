@@ -114,6 +114,9 @@
 
             public const string Create = prefix + "Create";
 
+            public const string CreateChooseQuestionWithAnswer = prefix + "CreateChooseQuestionWithAnswer";
+
+
             public const string Edit = prefix + "Edit";
 
             public const string Delete = prefix + "Delete/{Id}";

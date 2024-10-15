@@ -8,6 +8,8 @@ namespace EducationalPlatform.Core.Mapping.Question
         public QuestionProfile()
         {
             GetQuestionListMapping();
+            AddChooseQuestionWithAnswerMapping();
+
         }
     }
 }

@@ -5,7 +5,7 @@ namespace EducationalPlatform.Service.Abstracts
 {
     public interface IQuestionService
     {
-
+        public Task<string> AddChooseQuestionWithAnswer(ChooseQuestion question, List<string> choices);
         public Task<string> AddQuestion(AddQuestionRequest request);
 
         public Task<string> DeleteQuestionById(int id);

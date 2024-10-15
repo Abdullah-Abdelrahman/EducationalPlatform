@@ -26,6 +26,15 @@ namespace EducationalPlatform.Api.Controllers
         }
 
 
+        [HttpPost(Router.QuestionRouter.CreateChooseQuestionWithAnswer)]
+        public async Task<IActionResult> CreateChooseQuestionWithAnswer([FromBody] AddChooseQuestionWithAnswerCommand command)
+        {
+            var response = await Mediator.Send(command);
+
+            return NewResult(response);
+        }
+
+
         [HttpGet(Router.QuestionRouter.GetList)]
         public async Task<IActionResult> GetQuestionList()
         {

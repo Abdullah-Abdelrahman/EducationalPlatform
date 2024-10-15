@@ -18,6 +18,79 @@ namespace EducationalPlatform.Service.Implementations
             _questionRepository = questionRepository;
             _answerRepository = answerRepository;
         }
+
+        public async Task<string> AddChooseQuestionWithAnswer(ChooseQuestion question, List<string> choices)
+        {
+
+            if (choices == null)
+            {
+                return "choiceList must not be null";
+            }
+
+            int count = choices.Count;
+
+            var answerList = new List<Answer>();
+
+            for (int i = 1; i <= 4; i++)
+            {
+                if (i <= count)
+                {
+                    var newChoice = new Answer();
+                    newChoice.AnswerText = choices[i - 1];
+
+                    answerList.Add(await _answerRepository.AddAsync(newChoice));
+
+                    if (i == 1)
+                    {
+                        question.CorrectAnswerId = answerList[0].AnswerId;
+                    }
+
+                }
+                else
+                {
+                    Random random = new Random();
+                    int answerCount = _answerRepository.GetTableNoTracking().Count();
+                    while (true)
+                    {
+                        int Rid = random.Next(1, answerCount + 1);
+                        if (!answerList.Any(x => x.AnswerId == Rid))
+                        {
+                            answerList.Add(await _answerRepository.GetByIdAsync(Rid));
+                            break;
+                        }
+
+                    }
+
+                }
+            }
+
+            var chooseQuestion = new ChooseQuestion()
+            {
+                QuestionText = question.QuestionText,
+                QuestionImage = question.QuestionImage,
+                CorrectAnswerId = question.CorrectAnswerId,
+                QuestionType = "Choose",
+                ChoiceList = answerList
+
+            };
+
+            var result = await _questionRepository.AddChooseQuestionAsync(chooseQuestion);
+
+            if (result == "Success")
+            {
+                return "Success";
+            }
+            else if (result == "Cant Add")
+            {
+                return "Cant Add";
+            }
+            else
+            {
+                return "somthing bad Happened";
+            }
+
+        }
+
         public async Task<string> AddQuestion(AddQuestionRequest request)
         {
             if (request.QuestionType == "Writen")

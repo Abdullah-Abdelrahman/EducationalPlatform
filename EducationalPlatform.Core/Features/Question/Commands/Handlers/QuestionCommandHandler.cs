@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using EducationalPlatform.Core.Bases;
 using EducationalPlatform.Core.Features.Question.Commands.Models;
+using EducationalPlatform.Data.Entities;
 using EducationalPlatform.Service.Abstracts;
 using MediatR;
 
@@ -9,7 +10,8 @@ namespace EducationalPlatform.Core.Features.Question.Commands.Handlers
     public class QuestionCommandHandler : ResponseHandler,
         IRequestHandler<AddQuestionCommand, Response<string>>,
         IRequestHandler<DeleteQuestionCommand, Response<string>>,
-         IRequestHandler<EditQuestionCommand, Response<string>>
+         IRequestHandler<EditQuestionCommand, Response<string>>,
+         IRequestHandler<AddChooseQuestionWithAnswerCommand, Response<string>>
     {
 
         private readonly IQuestionService _questionService;
@@ -77,6 +79,26 @@ namespace EducationalPlatform.Core.Features.Question.Commands.Handlers
                 return BadRequest<string>(result);
             }
 
+        }
+
+        public async Task<Response<string>> Handle(AddChooseQuestionWithAnswerCommand request, CancellationToken cancellationToken)
+        {
+
+            var questionMapp = _mapper.Map<ChooseQuestion>(request);
+            var result = await _questionService.AddChooseQuestionWithAnswer(questionMapp, request.ChoiceList);
+
+            if (result == "Exist")
+            {
+                return UnprocessableEntity<string>("Question with the same text Exist Befor");
+            }
+            else if (result == "Success")
+            {
+                return Created<string>("Added successfuly");
+            }
+            else
+            {
+                return BadRequest<string>(result);
+            }
         }
     }
 }
