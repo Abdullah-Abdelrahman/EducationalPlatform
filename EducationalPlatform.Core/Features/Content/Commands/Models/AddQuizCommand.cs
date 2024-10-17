@@ -1,4 +1,5 @@
 ﻿using EducationalPlatform.Core.Bases;
+using EducationalPlatform.Data.Dto;
 using MediatR;
 
 namespace EducationalPlatform.Core.Features.Content.Commands.Models
@@ -16,14 +17,9 @@ namespace EducationalPlatform.Core.Features.Content.Commands.Models
         public int TotalMarks { get; set; }
 
 
-        public List<QuizQuestionDto> QuizQuestions { get; set; }
+        public List<QuizQuestionDto>? QuizQuestions { get; set; }
 
     }
 
-    public class QuizQuestionDto
-    {
-        public int QuestionId { get; set; }
 
-        public int Points { get; set; }
-    }
 }

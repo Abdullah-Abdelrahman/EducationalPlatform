@@ -1,10 +1,11 @@
-﻿using EducationalPlatform.Data.Entities;
+﻿using EducationalPlatform.Data.Dto;
+using EducationalPlatform.Data.Entities;
 
 namespace EducationalPlatform.Service.Abstracts
 {
     public interface IQuizService
     {
-        public Task<string> AddQuiz(Quiz quiz);
+        public Task<string> AddQuiz(Quiz quiz, List<QuizQuestionDto>? quizQuestions);
 
         public Task<string> DeleteQuizById(int id);
 

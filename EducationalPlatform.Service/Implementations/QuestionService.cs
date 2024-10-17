@@ -19,62 +19,91 @@ namespace EducationalPlatform.Service.Implementations
             _answerRepository = answerRepository;
         }
 
-        public async Task<string> AddChooseQuestionWithAnswer(ChooseQuestion question, List<string> choices)
+        public async Task<string> AddQuestionWithAnswer(ChooseQuestion question, List<string> choices)
         {
 
             if (choices == null)
             {
                 return "choiceList must not be null";
             }
-
-            int count = choices.Count;
-
-            var answerList = new List<Answer>();
-
-            for (int i = 1; i <= 4; i++)
+            string result;
+            if (question.QuestionType == "Writen")
             {
-                if (i <= count)
+                var newChoice = new Answer();
+                newChoice.AnswerText = choices[0];
+
+
+
+                var writenQuestion = new WriteQuestion()
                 {
-                    var newChoice = new Answer();
-                    newChoice.AnswerText = choices[i - 1];
+                    QuestionText = question.QuestionText,
+                    QuestionImage = question.QuestionImage,
+                    CorrectAnswerId = (await _answerRepository.AddAsync(newChoice)).AnswerId,
+                    QuestionType = question.QuestionType
 
-                    answerList.Add(await _answerRepository.AddAsync(newChoice));
+                };
 
-                    if (i == 1)
-                    {
-                        question.CorrectAnswerId = answerList[0].AnswerId;
-                    }
+                result = await _questionRepository.AddWritenQuestionAsync(writenQuestion);
 
-                }
-                else
+            }
+            else if (question.QuestionType == "Choose")
+            {
+                int count = choices.Count;
+
+                var answerList = new List<Answer>();
+
+                for (int i = 1; i <= 4; i++)
                 {
-                    Random random = new Random();
-                    int answerCount = _answerRepository.GetTableNoTracking().Count();
-                    while (true)
+                    if (i <= count)
                     {
-                        int Rid = random.Next(1, answerCount + 1);
-                        if (!answerList.Any(x => x.AnswerId == Rid))
+                        var newChoice = new Answer();
+                        newChoice.AnswerText = choices[i - 1];
+
+                        answerList.Add(await _answerRepository.AddAsync(newChoice));
+
+                        if (i == 1)
                         {
-                            answerList.Add(await _answerRepository.GetByIdAsync(Rid));
-                            break;
+                            question.CorrectAnswerId = answerList[0].AnswerId;
                         }
 
                     }
+                    else
+                    {
+                        Random random = new Random();
+                        int answerCount = _answerRepository.GetTableNoTracking().Count();
+                        while (true)
+                        {
+                            int Rid = random.Next(1, answerCount + 1);
+                            if (!answerList.Any(x => x.AnswerId == Rid))
+                            {
+                                answerList.Add(await _answerRepository.GetByIdAsync(Rid));
+                                break;
+                            }
 
+                        }
+
+                    }
                 }
+
+                var chooseQuestion = new ChooseQuestion()
+                {
+                    QuestionText = question.QuestionText,
+                    QuestionImage = question.QuestionImage,
+                    CorrectAnswerId = question.CorrectAnswerId,
+                    QuestionType = "Choose",
+                    ChoiceList = answerList
+
+                };
+
+                result = await _questionRepository.AddChooseQuestionAsync(chooseQuestion);
+
+            }
+            else
+            {
+                return $"No Question with type = {question.QuestionType}";
             }
 
-            var chooseQuestion = new ChooseQuestion()
-            {
-                QuestionText = question.QuestionText,
-                QuestionImage = question.QuestionImage,
-                CorrectAnswerId = question.CorrectAnswerId,
-                QuestionType = "Choose",
-                ChoiceList = answerList
 
-            };
-
-            var result = await _questionRepository.AddChooseQuestionAsync(chooseQuestion);
 
             if (result == "Success")
             {

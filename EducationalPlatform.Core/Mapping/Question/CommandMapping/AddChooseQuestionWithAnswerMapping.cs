@@ -8,9 +8,9 @@ namespace EducationalPlatform.Core.Mapping.Question
 
         public void AddChooseQuestionWithAnswerMapping()
         {
-            CreateMap<AddChooseQuestionWithAnswerCommand, ChooseQuestion>().ForMember(destnation => destnation.QuestionText, opt => opt.MapFrom(src => src.QuestionText)).ForMember(destnation => destnation.QuestionImage, opt => opt.MapFrom(src => src.QuestionImage));
+            CreateMap<AddQuestionWithAnswerCommand, ChooseQuestion>().ForMember(destnation => destnation.QuestionText, opt => opt.MapFrom(src => src.QuestionText)).ForMember(destnation => destnation.QuestionImage, opt => opt.MapFrom(src => src.QuestionImage));
 
-            CreateMap<AddChooseQuestionWithAnswerCommand, ChooseQuestion>()
+            CreateMap<AddQuestionWithAnswerCommand, ChooseQuestion>()
            .ForMember(dest => dest.ChoiceList, opt => opt.Ignore());
         }
     }

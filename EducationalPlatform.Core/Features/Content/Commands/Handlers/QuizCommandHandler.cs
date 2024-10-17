@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using EducationalPlatform.Core.Bases;
 using EducationalPlatform.Core.Features.Content.Commands.Models;
+using EducationalPlatform.Data.Entities;
 using EducationalPlatform.Service.Abstracts;
 using MediatR;
 
@@ -19,9 +20,19 @@ namespace EducationalPlatform.Core.Features.Content.Commands.Handlers
             _mapper = mapper;
         }
 
-        public Task<Response<string>> Handle(AddQuizCommand request, CancellationToken cancellationToken)
+        public async Task<Response<string>> Handle(AddQuizCommand request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+
+            var QuizMapper = _mapper.Map<Quiz>(request);
+            var result = await _quizService.AddQuiz(QuizMapper, request.QuizQuestions);
+            if (result == "Success")
+            {
+                return Created<string>("Added successfuly");
+            }
+            else
+            {
+                return BadRequest<string>(result);
+            }
         }
     }
 }

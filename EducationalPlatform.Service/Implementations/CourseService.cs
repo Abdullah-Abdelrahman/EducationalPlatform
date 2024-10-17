@@ -1,4 +1,5 @@
-﻿using EducationalPlatform.Data.Entities;
+﻿using EducationalPlatform.Data.Dto;
+using EducationalPlatform.Data.Entities;
 using EducationalPlatform.Infrastructure.Abstracts;
 using EducationalPlatform.Service.Abstracts;
 using Microsoft.EntityFrameworkCore;
@@ -8,12 +9,16 @@ namespace EducationalPlatform.Service.Implementations
     public class CourseService : ICourseService
     {
         private readonly ICourseRepository _courseRepository;
-        public CourseService(ICourseRepository courseRepository)
+
+        private readonly ICourseContentRepository _courseContentRepository;
+
+        public CourseService(ICourseRepository courseRepository, ICourseContentRepository courseContentRepository)
         {
+            _courseContentRepository = courseContentRepository;
             _courseRepository = courseRepository;
         }
 
-        public async Task<string> AddCourse(Course course)
+        public async Task<string> AddCourse(Course course, List<CourseContentDto> contentDto)
         {
             //Check if there is a Course with the same Name in the DB
 
@@ -27,7 +32,18 @@ namespace EducationalPlatform.Service.Implementations
             else
             {
 
-                await _courseRepository.AddAsync(course);
+                var newCourse = await _courseRepository.AddAsync(course);
+
+                foreach (var content in contentDto)
+                {
+                    await _courseContentRepository.AddAsync(new CourseContent()
+                    {
+                        CourseId = newCourse.CourseId,
+                        ContentId = content.ContentId,
+
+                    });
+                }
+
                 return "Success";
             }
 

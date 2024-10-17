@@ -7,6 +7,7 @@ namespace EducationalPlatform.Core.Mapping.Content
         public ContentProfile()
         {
             GetContentListMapping();
+            AddQuizMapping();
         }
     }
 }

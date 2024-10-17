@@ -8,7 +8,7 @@ namespace EducationalPlatform.Core.Mapping.Courses
 
         public void AddCourseMapping()
         {
-            CreateMap<AddCourseCommand, Course>().ForMember(destnation => destnation.Description, opt => opt.MapFrom(src => src.Description));
+            CreateMap<AddCourseCommand, Course>().ForMember(destnation => destnation.Description, opt => opt.MapFrom(src => src.Description)).ForMember(destnation => destnation.CourseContents, opt => opt.Ignore());
         }
     }
 }

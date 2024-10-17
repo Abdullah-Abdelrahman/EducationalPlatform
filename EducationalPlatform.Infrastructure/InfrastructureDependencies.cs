@@ -16,7 +16,8 @@ namespace EducationalPlatform.Infrastructure
             services.AddTransient<IQuestionRepository, QuestionRepository>();
             services.AddTransient<IContentRepository, ContentRepository>();
             services.AddTransient<IQuizRepository, QuizRepository>();
-
+            services.AddTransient<IQuizQuestionRepository, QuizQuestionRepository>();
+            services.AddTransient<ICourseContentRepository, CourseContentRepository>();
 
 
             services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));

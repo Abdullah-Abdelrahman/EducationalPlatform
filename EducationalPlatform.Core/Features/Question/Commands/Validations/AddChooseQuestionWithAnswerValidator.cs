@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace EducationalPlatform.Core.Features.Question.Commands.Validations
 {
-    public class AddChooseQuestionWithAnswerValidator : AbstractValidator<AddChooseQuestionWithAnswerCommand>
+    public class AddChooseQuestionWithAnswerValidator : AbstractValidator<AddQuestionWithAnswerCommand>
     {
 
 

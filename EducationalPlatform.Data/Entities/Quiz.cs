@@ -13,7 +13,7 @@
         {
             Questions = new HashSet<Question>();
 
-
+            QuizQuestions = new HashSet<QuizQuestion>();
         }
     }
 

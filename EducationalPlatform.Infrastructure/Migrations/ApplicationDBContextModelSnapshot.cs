@@ -380,13 +380,13 @@ namespace EducationalPlatform.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "f77364f2-ab97-4dec-b67b-0ea8109ead35",
+                            Id = "bb35dcd0-b535-4cfa-98af-cbab8dca3275",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "e37bf1cd-e299-4d23-a8bd-bd4a714fc249",
+                            Id = "23aa2f02-10e9-45bd-9ae7-21f85f159f93",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -667,13 +667,13 @@ namespace EducationalPlatform.Infrastructure.Migrations
 
             modelBuilder.Entity("EducationalPlatform.Data.Entities.QuizQuestion", b =>
                 {
-                    b.HasOne("EducationalPlatform.Data.Entities.Quiz", "Quiz")
+                    b.HasOne("EducationalPlatform.Data.Entities.Question", "Question")
                         .WithMany("QuizQuestions")
                         .HasForeignKey("QuestionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("EducationalPlatform.Data.Entities.Question", "Question")
+                    b.HasOne("EducationalPlatform.Data.Entities.Quiz", "Quiz")
                         .WithMany("QuizQuestions")
                         .HasForeignKey("QuizId")
                         .OnDelete(DeleteBehavior.Cascade)

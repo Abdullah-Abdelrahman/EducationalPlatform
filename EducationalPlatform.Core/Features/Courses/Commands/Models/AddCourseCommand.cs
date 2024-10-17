@@ -1,4 +1,5 @@
 ﻿using EducationalPlatform.Core.Bases;
+using EducationalPlatform.Data.Dto;
 using MediatR;
 
 namespace EducationalPlatform.Core.Features.Courses.Commands.Models
@@ -10,7 +11,10 @@ namespace EducationalPlatform.Core.Features.Courses.Commands.Models
 
         public string Description { get; set; }
 
+        public List<CourseContentDto>? Content { get; set; }
 
 
     }
+
+
 }

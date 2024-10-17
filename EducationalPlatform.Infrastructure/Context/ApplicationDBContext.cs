@@ -113,12 +113,12 @@ namespace EducationalPlatform.Infrastructure.Data
                    j => j
                     .HasOne(cc => cc.Question)
                     .WithMany(co => co.QuizQuestions)
-                    .HasForeignKey(cc => cc.QuizId),
+                    .HasForeignKey(cc => cc.QuestionId),
 
                      j => j
                      .HasOne(cc => cc.Quiz)
                     .WithMany(co => co.QuizQuestions)
-                    .HasForeignKey(cc => cc.QuestionId),
+                    .HasForeignKey(cc => cc.QuizId),
 
                      j =>
                      {

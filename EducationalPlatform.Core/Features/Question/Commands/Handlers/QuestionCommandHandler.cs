@@ -11,7 +11,7 @@ namespace EducationalPlatform.Core.Features.Question.Commands.Handlers
         IRequestHandler<AddQuestionCommand, Response<string>>,
         IRequestHandler<DeleteQuestionCommand, Response<string>>,
          IRequestHandler<EditQuestionCommand, Response<string>>,
-         IRequestHandler<AddChooseQuestionWithAnswerCommand, Response<string>>
+         IRequestHandler<AddQuestionWithAnswerCommand, Response<string>>
     {
 
         private readonly IQuestionService _questionService;
@@ -81,11 +81,11 @@ namespace EducationalPlatform.Core.Features.Question.Commands.Handlers
 
         }
 
-        public async Task<Response<string>> Handle(AddChooseQuestionWithAnswerCommand request, CancellationToken cancellationToken)
+        public async Task<Response<string>> Handle(AddQuestionWithAnswerCommand request, CancellationToken cancellationToken)
         {
 
             var questionMapp = _mapper.Map<ChooseQuestion>(request);
-            var result = await _questionService.AddChooseQuestionWithAnswer(questionMapp, request.ChoiceList);
+            var result = await _questionService.AddQuestionWithAnswer(questionMapp, request.ChoiceList);
 
             if (result == "Exist")
             {
