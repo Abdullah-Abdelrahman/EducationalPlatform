@@ -41,6 +41,10 @@ namespace EducationalPlatform.Infrastructure.Data
 
         public DbSet<Content> Content { get; set; }
 
+        public DbSet<Submit> submits { get; set; }
+
+        public DbSet<QuizQuestionAnswer> quizQuestionAnswers { get; set; }
+
         #endregion
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

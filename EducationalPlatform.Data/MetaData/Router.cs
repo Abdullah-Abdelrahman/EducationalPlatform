@@ -159,7 +159,7 @@
 
             public const string Delete = prefix + "Delete/{Id}";
 
-            public const string TypeList = prefix + "TypeList";
+            public const string Open = prefix + "Open";
 
         }
 

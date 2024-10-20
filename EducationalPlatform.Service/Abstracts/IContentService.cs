@@ -17,5 +17,7 @@ namespace EducationalPlatform.Service.Abstracts
 
         public Task<string> UpdateGeneralContentAsync(EditGeneralContentResult Content);
 
+        public Task<bool> ExistByIdAsync(int id);
+
     }
 }

@@ -25,6 +25,7 @@ namespace EducationalPlatform.Core.Features.Content.Commands.Handlers
         public async Task<Response<string>> Handle(AddGeneralContentCommand request, CancellationToken cancellationToken)
         {
 
+            request.PathName = request.webRootPath;
             var result = await _contentService.AddGeneralContent(request);
 
             if (result == "Success")

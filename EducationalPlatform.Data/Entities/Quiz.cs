@@ -4,6 +4,8 @@
     {
         public int TotalMarks { get; private set; }
 
+        public int TimeInMinute { get; set; }
+
 
         public virtual ICollection<QuizQuestion> QuizQuestions { get; set; }
 

@@ -13,16 +13,19 @@ namespace EducationalPlatform.Api.Controllers
     {
 
         private readonly IQuestionService _questionService;
-        public ContentController(IQuestionService questionService)
+
+        public ContentController(IQuestionService questionService, IWebHostEnvironment webHostEnvironment)
         {
             _questionService = questionService;
+            _webHost = webHostEnvironment;
+
         }
 
         [HttpPost(Router.ContentRouter.CreateGeneralContent)]
-        public async Task<IActionResult> CreateGeneralContentCommand([FromBody] AddGeneralContentCommand command)
+        public async Task<IActionResult> CreateGeneralContentCommand([FromForm] AddGeneralContentCommand command)
         {
+            command.webRootPath = _webHost.ContentRootPath;
             var response = await Mediator.Send(command);
-
             return NewResult(response);
         }
 

@@ -10,9 +10,12 @@ namespace EducationalPlatform.Service.Implementations
     {
         private readonly IContentRepository _contentRepository;
 
-        public ContentService(IContentRepository contentRepository)
+        private readonly IFileUploadService _uploadService;
+
+        public ContentService(IContentRepository contentRepository, IFileUploadService uploadService)
         {
             _contentRepository = contentRepository;
+            _uploadService = uploadService;
         }
         public async Task<string> AddGeneralContent(AddGeneralContentRequest request)
         {
@@ -32,6 +35,9 @@ namespace EducationalPlatform.Service.Implementations
                     return "PathName is Empty";
                 }
 
+
+
+
                 var newBook = new Book()
                 {
                     Title = request.Title,
@@ -39,7 +45,7 @@ namespace EducationalPlatform.Service.Implementations
                     CreatedAt = DateTime.Now,
                     ContentType = request.ContentType,
                     File = request.ContentFile,
-                    PathName = request.PathName
+                    PathName = (await _uploadService.UploadFile(request.ContentFile, request.PathName))
                 };
 
                 var result = await _contentRepository.AddBookAsync(newBook);
@@ -127,6 +133,18 @@ namespace EducationalPlatform.Service.Implementations
 
 
 
+            }
+        }
+
+        public async Task<bool> ExistByIdAsync(int id)
+        {
+            if ((await _contentRepository.GetByIdAsync(id)) == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
 

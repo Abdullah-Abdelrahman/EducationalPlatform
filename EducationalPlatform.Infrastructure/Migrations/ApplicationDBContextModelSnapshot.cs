@@ -351,6 +351,59 @@ namespace EducationalPlatform.Infrastructure.Migrations
                     b.ToTable("QuizQuestion");
                 });
 
+            modelBuilder.Entity("EducationalPlatform.Data.Entities.QuizQuestionAnswer", b =>
+                {
+                    b.Property<int>("SubmitId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AnswerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("QuestionId")
+                        .HasColumnType("int");
+
+                    b.HasKey("SubmitId");
+
+                    b.HasIndex("AnswerId");
+
+                    b.HasIndex("QuestionId");
+
+                    b.ToTable("quizQuestionAnswers");
+                });
+
+            modelBuilder.Entity("EducationalPlatform.Data.Entities.Submit", b =>
+                {
+                    b.Property<int>("SubmitId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SubmitId"));
+
+                    b.Property<DateTime?>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("QuizId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int?>("result")
+                        .HasColumnType("int");
+
+                    b.HasKey("SubmitId");
+
+                    b.HasIndex("QuizId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("submits");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -380,13 +433,13 @@ namespace EducationalPlatform.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "bb35dcd0-b535-4cfa-98af-cbab8dca3275",
+                            Id = "6e95785d-9aef-41a8-af3c-53ac5e0a5c32",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "23aa2f02-10e9-45bd-9ae7-21f85f159f93",
+                            Id = "8631fb01-62b0-42a6-94d3-952cc7d15e66",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -522,6 +575,9 @@ namespace EducationalPlatform.Infrastructure.Migrations
             modelBuilder.Entity("EducationalPlatform.Data.Entities.Quiz", b =>
                 {
                     b.HasBaseType("EducationalPlatform.Data.Entities.Content");
+
+                    b.Property<int>("TimeInMinute")
+                        .HasColumnType("int");
 
                     b.Property<int>("TotalMarks")
                         .HasColumnType("int");
@@ -684,6 +740,52 @@ namespace EducationalPlatform.Infrastructure.Migrations
                     b.Navigation("Quiz");
                 });
 
+            modelBuilder.Entity("EducationalPlatform.Data.Entities.QuizQuestionAnswer", b =>
+                {
+                    b.HasOne("EducationalPlatform.Data.Entities.Answer", "Answer")
+                        .WithMany()
+                        .HasForeignKey("AnswerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EducationalPlatform.Data.Entities.Question", "Question")
+                        .WithMany()
+                        .HasForeignKey("QuestionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EducationalPlatform.Data.Entities.Submit", "Sumbit")
+                        .WithMany("quizQuestionAnswers")
+                        .HasForeignKey("SubmitId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Answer");
+
+                    b.Navigation("Question");
+
+                    b.Navigation("Sumbit");
+                });
+
+            modelBuilder.Entity("EducationalPlatform.Data.Entities.Submit", b =>
+                {
+                    b.HasOne("EducationalPlatform.Data.Entities.Quiz", "Quiz")
+                        .WithMany()
+                        .HasForeignKey("QuizId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EducationalPlatform.Data.Entities.AppUser", "AppUser")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+
+                    b.Navigation("Quiz");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -757,6 +859,11 @@ namespace EducationalPlatform.Infrastructure.Migrations
             modelBuilder.Entity("EducationalPlatform.Data.Entities.Question", b =>
                 {
                     b.Navigation("QuizQuestions");
+                });
+
+            modelBuilder.Entity("EducationalPlatform.Data.Entities.Submit", b =>
+                {
+                    b.Navigation("quizQuestionAnswers");
                 });
 
             modelBuilder.Entity("EducationalPlatform.Data.Entities.Quiz", b =>

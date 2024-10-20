@@ -1,17 +1,24 @@
 ﻿using EducationalPlatform.Core.Bases;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
 namespace EducationalPlatform.Api.Base
 {
-   
+
     [ApiController]
     public class AppControllerBase : ControllerBase
     {
         private IMediator _mediatorInstance;
+
+        protected IWebHostEnvironment _webHost;
+
+
+
         protected IMediator Mediator => _mediatorInstance ??= HttpContext.RequestServices.GetService<IMediator>();
+
+
+
 
         #region Actions
         // Works only with single entity not Colection

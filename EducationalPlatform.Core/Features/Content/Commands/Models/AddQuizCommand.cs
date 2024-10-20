@@ -16,6 +16,7 @@ namespace EducationalPlatform.Core.Features.Content.Commands.Models
 
         public int TotalMarks { get; set; }
 
+        public int TimeInMinute { get; set; }
 
         public List<QuizQuestionDto>? QuizQuestions { get; set; }
 

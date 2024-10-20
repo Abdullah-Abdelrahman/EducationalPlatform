@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using System.Text.Json.Serialization;
 
 namespace EducationalPlatform.Data.Dto
 {
@@ -16,6 +17,7 @@ namespace EducationalPlatform.Data.Dto
         public IFormFile? ContentFile { get; set; }
 
         //For the Books
+        [JsonIgnore]
         public string? PathName { get; set; }
 
         //For Video

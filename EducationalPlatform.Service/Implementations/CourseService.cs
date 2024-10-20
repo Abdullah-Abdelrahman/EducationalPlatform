@@ -12,10 +12,12 @@ namespace EducationalPlatform.Service.Implementations
 
         private readonly ICourseContentRepository _courseContentRepository;
 
-        public CourseService(ICourseRepository courseRepository, ICourseContentRepository courseContentRepository)
+        private readonly IContentService _contentService;
+        public CourseService(ICourseRepository courseRepository, ICourseContentRepository courseContentRepository, IContentService contentService)
         {
             _courseContentRepository = courseContentRepository;
             _courseRepository = courseRepository;
+            _contentService = contentService;
         }
 
         public async Task<string> AddCourse(Course course, List<CourseContentDto> contentDto)
@@ -34,15 +36,23 @@ namespace EducationalPlatform.Service.Implementations
 
                 var newCourse = await _courseRepository.AddAsync(course);
 
-                foreach (var content in contentDto)
+                if (newCourse != null)
                 {
-                    await _courseContentRepository.AddAsync(new CourseContent()
+                    foreach (var content in contentDto)
                     {
-                        CourseId = newCourse.CourseId,
-                        ContentId = content.ContentId,
+                        if ((await _contentService.ExistByIdAsync(content.ContentId)))
+                        {
+                            await _courseContentRepository.AddAsync(new CourseContent()
+                            {
+                                CourseId = newCourse.CourseId,
+                                ContentId = content.ContentId,
 
-                    });
+                            });
+                        }
+
+                    }
                 }
+
 
                 return "Success";
             }

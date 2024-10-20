@@ -337,5 +337,16 @@ namespace EducationalPlatform.Service.Implementations
 
         }
 
+        public async Task<bool> ExistByIdAsync(int id)
+        {
+            if ((await _questionRepository.GetByIdAsync(id)) == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }

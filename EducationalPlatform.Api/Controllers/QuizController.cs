@@ -1,5 +1,6 @@
 ﻿using EducationalPlatform.Api.Base;
 using EducationalPlatform.Core.Features.Content.Commands.Models;
+using EducationalPlatform.Core.Features.Content.Queries.Models;
 using EducationalPlatform.Data.MetaData;
 using EducationalPlatform.Service.Abstracts;
 using Microsoft.AspNetCore.Mvc;
@@ -27,6 +28,13 @@ namespace EducationalPlatform.Api.Controllers
             return NewResult(response);
         }
 
+        [HttpPost(Router.QuizRouter.Open)]
+        public async Task<IActionResult> OpenQuiz([FromForm] int QuizId, [FromForm] string UserId)
+        {
+            var command = new OpenQuizQuery(QuizId, UserId);
+            var response = await Mediator.Send(command);
 
+            return NewResult(response);
+        }
     }
 }

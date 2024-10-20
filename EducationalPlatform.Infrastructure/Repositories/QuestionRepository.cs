@@ -13,6 +13,7 @@ namespace EducationalPlatform.Infrastructure.Repositories
         private readonly DbSet<WriteQuestion> _writeQuestions;
         private readonly DbSet<TrueOrFalseQuestion> _trueOrFalseQuestions;
         private readonly DbSet<ChooseQuestion> _chooseQuestions;
+        //private readonly DbSet<Answer> _answers;
 
 
         public QuestionRepository(ApplicationDBContext dbContext) : base(dbContext)
@@ -21,6 +22,7 @@ namespace EducationalPlatform.Infrastructure.Repositories
             _writeQuestions = dbContext.Set<WriteQuestion>();
             _trueOrFalseQuestions = dbContext.Set<TrueOrFalseQuestion>();
             _chooseQuestions = dbContext.Set<ChooseQuestion>();
+            // _answers = dbContext.Set<Answer>();
         }
 
         public async Task<string> AddChooseQuestionAsync(ChooseQuestion question)
@@ -83,9 +85,9 @@ namespace EducationalPlatform.Infrastructure.Repositories
             }
             else if (Questiontype == "TrueOrFalse")
             {
-                var question = await _trueOrFalseQuestions.Where(x => x.QuestionId == id).FirstOrDefaultAsync();
 
 
+                // ChoiceList.AddRange(_answers.Take(2));
                 return ChoiceList;
 
             }

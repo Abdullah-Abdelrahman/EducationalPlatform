@@ -20,5 +20,7 @@ namespace EducationalPlatform.Service.Abstracts
 
         public Task<string> UpdateQuestionAsync(EditQuestionResult question);
 
+        public Task<bool> ExistByIdAsync(int id);
+
     }
 }

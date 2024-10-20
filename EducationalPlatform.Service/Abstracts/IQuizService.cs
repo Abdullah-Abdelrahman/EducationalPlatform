@@ -15,5 +15,9 @@ namespace EducationalPlatform.Service.Abstracts
 
 
         public Task<string> UpdateQuizAsync(Quiz Quiz);
+
+
+        public Task<OpenQuizDto> OpenQuizSubmitAsync(int QuizId, string UserId);
+
     }
 }
