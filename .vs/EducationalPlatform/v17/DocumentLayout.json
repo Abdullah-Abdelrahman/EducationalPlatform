@@ -46,8 +46,7 @@
               "RelativeToolTip": "EducationalPlatform.Core\\Features\\Content\\Commands\\Handlers\\GeneralContentCommandHandler.cs",
               "ViewState": "AQIAABEAAAAAAAAAAAAkwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T17:16:08.619Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-20T17:16:08.619Z"
             },
             {
               "$type": "Document",
@@ -59,8 +58,7 @@
               "RelativeToolTip": "EducationalPlatform.Service\\Implementations\\FileUploadService.cs",
               "ViewState": "AQIAAAoAAAAAAAAAAAAAABcAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T16:50:35.978Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-20T16:50:35.978Z"
             },
             {
               "$type": "Document",
@@ -70,7 +68,7 @@
               "RelativeDocumentMoniker": "EducationalPlatform.Api\\Controllers\\ContentController.cs",
               "ToolTip": "E:\\All_of_my_projrcts\\EducationalPlatform\\EducationalPlatform.Api\\Controllers\\ContentController.cs",
               "RelativeToolTip": "EducationalPlatform.Api\\Controllers\\ContentController.cs",
-              "ViewState": "AQIAABAAAAAAAAAAAIBBwBsAAAA4AAAA",
+              "ViewState": "AQIAABUAAAAAAAAAAAA0wBsAAAA4AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-20T16:40:54.999Z",
               "EditorCaption": ""
@@ -85,8 +83,7 @@
               "RelativeToolTip": "EducationalPlatform.Core\\Features\\Content\\Commands\\Models\\AddGeneralContentCommand.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAAAAAAsAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T16:40:38.812Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-20T16:40:38.812Z"
             }
           ]
         }
