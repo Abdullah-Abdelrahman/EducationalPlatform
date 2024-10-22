@@ -89,6 +89,9 @@ namespace EducationalPlatform.Infrastructure.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<decimal>("Balance")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -203,6 +206,9 @@ namespace EducationalPlatform.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
                     b.HasKey("CourseId");
 
                     b.ToTable("Courses");
@@ -235,7 +241,7 @@ namespace EducationalPlatform.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ContentProgress")
+                    b.Property<string>("Coupon")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -244,6 +250,9 @@ namespace EducationalPlatform.Infrastructure.Migrations
 
                     b.Property<DateTime>("EnrollmentDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<decimal>("FinalPrice")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("UserId")
                         .IsRequired()
@@ -258,6 +267,24 @@ namespace EducationalPlatform.Infrastructure.Migrations
                     b.ToTable("Enrollments");
                 });
 
+            modelBuilder.Entity("EducationalPlatform.Data.Entities.EnrollmentContentProgress", b =>
+                {
+                    b.Property<int>("EnrollmentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ContentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Progress")
+                        .HasColumnType("int");
+
+                    b.HasKey("EnrollmentId");
+
+                    b.HasIndex("ContentId");
+
+                    b.ToTable("EnrollmentContentProgress");
+                });
+
             modelBuilder.Entity("EducationalPlatform.Data.Entities.Payment", b =>
                 {
                     b.Property<int>("PaymentId")
@@ -267,12 +294,6 @@ namespace EducationalPlatform.Infrastructure.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PaymentId"));
 
                     b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("CourseId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("Discount")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Method")
@@ -287,8 +308,6 @@ namespace EducationalPlatform.Infrastructure.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("PaymentId");
-
-                    b.HasIndex("CourseId");
 
                     b.HasIndex("UserId");
 
@@ -382,18 +401,21 @@ namespace EducationalPlatform.Infrastructure.Migrations
                     b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("Partialresult")
+                        .HasColumnType("int");
+
                     b.Property<int>("QuizId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("Totalresult")
+                        .HasColumnType("int");
+
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<int?>("result")
-                        .HasColumnType("int");
 
                     b.HasKey("SubmitId");
 
@@ -433,13 +455,13 @@ namespace EducationalPlatform.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "6e95785d-9aef-41a8-af3c-53ac5e0a5c32",
+                            Id = "c950996f-093c-468d-b92f-1d4984bb8437",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "8631fb01-62b0-42a6-94d3-952cc7d15e66",
+                            Id = "3a91c9a3-94bb-46cf-974b-74cb254f44e7",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -691,21 +713,32 @@ namespace EducationalPlatform.Infrastructure.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("EducationalPlatform.Data.Entities.Payment", b =>
+            modelBuilder.Entity("EducationalPlatform.Data.Entities.EnrollmentContentProgress", b =>
                 {
-                    b.HasOne("EducationalPlatform.Data.Entities.Course", "Course")
+                    b.HasOne("EducationalPlatform.Data.Entities.Content", "Content")
                         .WithMany()
-                        .HasForeignKey("CourseId")
+                        .HasForeignKey("ContentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("EducationalPlatform.Data.Entities.Enrollment", "Enrollment")
+                        .WithMany("CourseContentsProgress")
+                        .HasForeignKey("EnrollmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Content");
+
+                    b.Navigation("Enrollment");
+                });
+
+            modelBuilder.Entity("EducationalPlatform.Data.Entities.Payment", b =>
+                {
                     b.HasOne("EducationalPlatform.Data.Entities.AppUser", "User")
                         .WithMany("Payments")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Course");
 
                     b.Navigation("User");
                 });
@@ -854,6 +887,11 @@ namespace EducationalPlatform.Infrastructure.Migrations
                     b.Navigation("CourseContents");
 
                     b.Navigation("Enrollments");
+                });
+
+            modelBuilder.Entity("EducationalPlatform.Data.Entities.Enrollment", b =>
+                {
+                    b.Navigation("CourseContentsProgress");
                 });
 
             modelBuilder.Entity("EducationalPlatform.Data.Entities.Question", b =>

@@ -8,7 +8,9 @@ using MediatR;
 namespace EducationalPlatform.Core.Features.Content.Commands.Handlers
 {
     public class QuizCommandHandler : ResponseHandler,
-         IRequestHandler<AddQuizCommand, Response<string>>
+         IRequestHandler<AddQuizCommand, Response<string>>,
+         IRequestHandler<SubmitQuizCommand, Response<string>>
+
     {
 
         private readonly IMapper _mapper;
@@ -33,6 +35,11 @@ namespace EducationalPlatform.Core.Features.Content.Commands.Handlers
             {
                 return BadRequest<string>(result);
             }
+        }
+
+        public Task<Response<string>> Handle(SubmitQuizCommand request, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -20,6 +20,9 @@ namespace EducationalPlatform.Service
             services.AddTransient<IQuizService, QuizService>();
 
             services.AddTransient<IFileUploadService, FileUploadService>();
+            services.AddTransient<IPaymentService, PaymentService>();
+            services.AddTransient<IEnrollmentService, EnrollmentService>();
+            services.AddTransient<IEmailService, EmailService>();
 
 
 

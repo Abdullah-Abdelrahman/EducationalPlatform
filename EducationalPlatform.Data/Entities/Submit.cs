@@ -18,7 +18,9 @@ namespace EducationalPlatform.Data.Entities
 
         public DateTime? EndDate { get; set; }
 
-        public int? result { get; set; }
+        public int? Partialresult { get; set; }
+
+        public int? Totalresult { get; set; }
 
         public List<QuizQuestionAnswer>? quizQuestionAnswers { get; set; }
 

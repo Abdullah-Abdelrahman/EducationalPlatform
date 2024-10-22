@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "E:\\All_of_my_projrcts\\EducationalPlatform\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0000D7EB-4301-4570-8A4B-DC8C7F5FD6C7}|EducationalPlatform.Api\\EducationalPlatform.Api.csproj|e:\\all_of_my_projrcts\\educationalplatform\\educationalplatform.api\\controllers\\contentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0000D7EB-4301-4570-8A4B-DC8C7F5FD6C7}|EducationalPlatform.Api\\EducationalPlatform.Api.csproj|solutionrelative:educationalplatform.api\\controllers\\contentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D986B1F8-EB22-4B6D-BD00-6FC34B9990BE}|EducationalPlatform.Service\\EducationalPlatform.Service.csproj|e:\\all_of_my_projrcts\\educationalplatform\\educationalplatform.service\\implementations\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D986B1F8-EB22-4B6D-BD00-6FC34B9990BE}|EducationalPlatform.Service\\EducationalPlatform.Service.csproj|solutionrelative:educationalplatform.service\\implementations\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D986B1F8-EB22-4B6D-BD00-6FC34B9990BE}|EducationalPlatform.Service\\EducationalPlatform.Service.csproj|e:\\all_of_my_projrcts\\educationalplatform\\educationalplatform.service\\implementations\\fileuploadservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D986B1F8-EB22-4B6D-BD00-6FC34B9990BE}|EducationalPlatform.Service\\EducationalPlatform.Service.csproj|solutionrelative:educationalplatform.service\\implementations\\fileuploadservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0000D7EB-4301-4570-8A4B-DC8C7F5FD6C7}|EducationalPlatform.Api\\EducationalPlatform.Api.csproj|e:\\all_of_my_projrcts\\educationalplatform\\educationalplatform.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{0000D7EB-4301-4570-8A4B-DC8C7F5FD6C7}|EducationalPlatform.Api\\EducationalPlatform.Api.csproj|solutionrelative:educationalplatform.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4A60A851-90E8-4270-AFF3-451BBD8779C2}|EducationalPlatform.Core\\EducationalPlatform.Core.csproj|e:\\all_of_my_projrcts\\educationalplatform\\educationalplatform.core\\features\\content\\commands\\handlers\\generalcontentcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4A60A851-90E8-4270-AFF3-451BBD8779C2}|EducationalPlatform.Core\\EducationalPlatform.Core.csproj|solutionrelative:educationalplatform.core\\features\\content\\commands\\handlers\\generalcontentcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4A60A851-90E8-4270-AFF3-451BBD8779C2}|EducationalPlatform.Core\\EducationalPlatform.Core.csproj|e:\\all_of_my_projrcts\\educationalplatform\\educationalplatform.core\\features\\email\\commands\\handlers\\emailcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A60A851-90E8-4270-AFF3-451BBD8779C2}|EducationalPlatform.Core\\EducationalPlatform.Core.csproj|solutionrelative:educationalplatform.core\\features\\email\\commands\\handlers\\emailcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4A60A851-90E8-4270-AFF3-451BBD8779C2}|EducationalPlatform.Core\\EducationalPlatform.Core.csproj|e:\\all_of_my_projrcts\\educationalplatform\\educationalplatform.core\\features\\content\\commands\\models\\addgeneralcontentcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4A60A851-90E8-4270-AFF3-451BBD8779C2}|EducationalPlatform.Core\\EducationalPlatform.Core.csproj|solutionrelative:educationalplatform.core\\features\\content\\commands\\models\\addgeneralcontentcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4A60A851-90E8-4270-AFF3-451BBD8779C2}|EducationalPlatform.Core\\EducationalPlatform.Core.csproj|e:\\all_of_my_projrcts\\educationalplatform\\educationalplatform.core\\features\\email\\commands\\models\\sendemailcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A60A851-90E8-4270-AFF3-451BBD8779C2}|EducationalPlatform.Core\\EducationalPlatform.Core.csproj|solutionrelative:educationalplatform.core\\features\\email\\commands\\models\\sendemailcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,52 +38,55 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "GeneralContentCommandHandler.cs",
-              "DocumentMoniker": "E:\\All_of_my_projrcts\\EducationalPlatform\\EducationalPlatform.Core\\Features\\Content\\Commands\\Handlers\\GeneralContentCommandHandler.cs",
-              "RelativeDocumentMoniker": "EducationalPlatform.Core\\Features\\Content\\Commands\\Handlers\\GeneralContentCommandHandler.cs",
-              "ToolTip": "E:\\All_of_my_projrcts\\EducationalPlatform\\EducationalPlatform.Core\\Features\\Content\\Commands\\Handlers\\GeneralContentCommandHandler.cs",
-              "RelativeToolTip": "EducationalPlatform.Core\\Features\\Content\\Commands\\Handlers\\GeneralContentCommandHandler.cs",
-              "ViewState": "AQIAABEAAAAAAAAAAAAkwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T17:16:08.619Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "FileUploadService.cs",
-              "DocumentMoniker": "E:\\All_of_my_projrcts\\EducationalPlatform\\EducationalPlatform.Service\\Implementations\\FileUploadService.cs",
-              "RelativeDocumentMoniker": "EducationalPlatform.Service\\Implementations\\FileUploadService.cs",
-              "ToolTip": "E:\\All_of_my_projrcts\\EducationalPlatform\\EducationalPlatform.Service\\Implementations\\FileUploadService.cs",
-              "RelativeToolTip": "EducationalPlatform.Service\\Implementations\\FileUploadService.cs",
-              "ViewState": "AQIAAAoAAAAAAAAAAAAAABcAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T16:50:35.978Z"
+              "Title": "appsettings.json",
+              "DocumentMoniker": "E:\\All_of_my_projrcts\\EducationalPlatform\\EducationalPlatform.Api\\appsettings.json",
+              "RelativeDocumentMoniker": "EducationalPlatform.Api\\appsettings.json",
+              "ToolTip": "E:\\All_of_my_projrcts\\EducationalPlatform\\EducationalPlatform.Api\\appsettings.json",
+              "RelativeToolTip": "EducationalPlatform.Api\\appsettings.json",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABQAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-10-22T18:04:09.975Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ContentController.cs",
-              "DocumentMoniker": "E:\\All_of_my_projrcts\\EducationalPlatform\\EducationalPlatform.Api\\Controllers\\ContentController.cs",
-              "RelativeDocumentMoniker": "EducationalPlatform.Api\\Controllers\\ContentController.cs",
-              "ToolTip": "E:\\All_of_my_projrcts\\EducationalPlatform\\EducationalPlatform.Api\\Controllers\\ContentController.cs",
-              "RelativeToolTip": "EducationalPlatform.Api\\Controllers\\ContentController.cs",
-              "ViewState": "AQIAABUAAAAAAAAAAAA0wBsAAAA4AAAA",
+              "Title": "EmailService.cs",
+              "DocumentMoniker": "E:\\All_of_my_projrcts\\EducationalPlatform\\EducationalPlatform.Service\\Implementations\\EmailService.cs",
+              "RelativeDocumentMoniker": "EducationalPlatform.Service\\Implementations\\EmailService.cs",
+              "ToolTip": "E:\\All_of_my_projrcts\\EducationalPlatform\\EducationalPlatform.Service\\Implementations\\EmailService.cs",
+              "RelativeToolTip": "EducationalPlatform.Service\\Implementations\\EmailService.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAA0wBkAAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T16:40:54.999Z",
+              "WhenOpened": "2024-10-22T17:11:01.135Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EmailCommandHandler.cs",
+              "DocumentMoniker": "E:\\All_of_my_projrcts\\EducationalPlatform\\EducationalPlatform.Core\\Features\\Email\\Commands\\Handlers\\EmailCommandHandler.cs",
+              "RelativeDocumentMoniker": "EducationalPlatform.Core\\Features\\Email\\Commands\\Handlers\\EmailCommandHandler.cs",
+              "ToolTip": "E:\\All_of_my_projrcts\\EducationalPlatform\\EducationalPlatform.Core\\Features\\Email\\Commands\\Handlers\\EmailCommandHandler.cs",
+              "RelativeToolTip": "EducationalPlatform.Core\\Features\\Email\\Commands\\Handlers\\EmailCommandHandler.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAmwBgAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T17:11:01.105Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "AddGeneralContentCommand.cs",
-              "DocumentMoniker": "E:\\All_of_my_projrcts\\EducationalPlatform\\EducationalPlatform.Core\\Features\\Content\\Commands\\Models\\AddGeneralContentCommand.cs",
-              "RelativeDocumentMoniker": "EducationalPlatform.Core\\Features\\Content\\Commands\\Models\\AddGeneralContentCommand.cs",
-              "ToolTip": "E:\\All_of_my_projrcts\\EducationalPlatform\\EducationalPlatform.Core\\Features\\Content\\Commands\\Models\\AddGeneralContentCommand.cs",
-              "RelativeToolTip": "EducationalPlatform.Core\\Features\\Content\\Commands\\Models\\AddGeneralContentCommand.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAsAAAAWAAAA",
+              "Title": "SendEmailCommand.cs",
+              "DocumentMoniker": "E:\\All_of_my_projrcts\\EducationalPlatform\\EducationalPlatform.Core\\Features\\Email\\Commands\\Models\\SendEmailCommand.cs",
+              "RelativeDocumentMoniker": "EducationalPlatform.Core\\Features\\Email\\Commands\\Models\\SendEmailCommand.cs",
+              "ToolTip": "E:\\All_of_my_projrcts\\EducationalPlatform\\EducationalPlatform.Core\\Features\\Email\\Commands\\Models\\SendEmailCommand.cs",
+              "RelativeToolTip": "EducationalPlatform.Core\\Features\\Email\\Commands\\Models\\SendEmailCommand.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T16:40:38.812Z"
+              "WhenOpened": "2024-10-22T17:11:00.743Z",
+              "EditorCaption": ""
             }
           ]
         }

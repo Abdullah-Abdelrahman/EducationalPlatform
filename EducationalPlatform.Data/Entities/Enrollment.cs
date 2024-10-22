@@ -10,9 +10,14 @@ namespace EducationalPlatform.Data.Entities
 
         public string CompletionStatus { get; set; }
 
-        public List<int> ContentProgress { get; set; }
+        public string Coupon { get; set; }
+
+        public decimal FinalPrice { get; set; }
+
+        public List<EnrollmentContentProgress> CourseContentsProgress { get; set; }
 
         public string UserId { get; set; }
+
         public int CourseId { get; set; }
 
         [ForeignKey("UserId")]
@@ -23,7 +28,7 @@ namespace EducationalPlatform.Data.Entities
 
         public Enrollment()
         {
-            ContentProgress = new List<int>();
+            CourseContentsProgress = new List<EnrollmentContentProgress>();
         }
     }
 

@@ -28,10 +28,20 @@ namespace EducationalPlatform.Api.Controllers
             return NewResult(response);
         }
 
-        [HttpPost(Router.QuizRouter.Open)]
-        public async Task<IActionResult> OpenQuiz([FromForm] int QuizId, [FromForm] string UserId)
+        [HttpGet(Router.QuizRouter.Open)]
+        public async Task<IActionResult> OpenQuiz(int QuizId, string UserId)
         {
             var command = new OpenQuizQuery(QuizId, UserId);
+            var response = await Mediator.Send(command);
+
+            return NewResult(response);
+        }
+
+
+        [HttpPost(Router.QuizRouter.Close)]
+        public async Task<IActionResult> CloseQuiz(SubmitQuizCommand command)
+        {
+
             var response = await Mediator.Send(command);
 
             return NewResult(response);

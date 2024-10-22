@@ -161,8 +161,47 @@
 
             public const string Open = prefix + "Open";
 
+            public const string Close = prefix + "Close";
+
+
         }
 
 
+        public static class PaymentRouter
+        {
+            public const string prefix = Rule + "Payment/";
+
+            public const string GetList = prefix + "List";
+
+            public const string GetById = prefix + "{Id}";
+
+            public const string Create = prefix + "Create";
+
+        }
+
+
+        public static class EnrollmentRouter
+        {
+            public const string prefix = Rule + "Enrollment/";
+
+            public const string GetList = prefix + "List";
+
+            public const string GetById = prefix + "{Id}";
+
+            public const string Create = prefix + "Create";
+
+        }
+
+        public static class EmailRouter
+        {
+            public const string prefix = Rule + "Email/";
+
+            public const string GetList = prefix + "List";
+
+            public const string GetById = prefix + "{Id}";
+
+            public const string Send = prefix + "Send";
+
+        }
     }
 }

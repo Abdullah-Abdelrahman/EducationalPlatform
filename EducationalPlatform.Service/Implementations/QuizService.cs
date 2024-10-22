@@ -17,12 +17,15 @@ namespace EducationalPlatform.Service.Implementations
         private readonly ISubmitRepository _submitRepository;
 
 
-        public QuizService(IQuizRepository quizRepository, IQuizQuestionRepository quizQuestionRepository, IQuestionService questionService, ISubmitRepository submitRepository)
+        private readonly IQuizQuestionAnswerRepository _quizQuestionAnswerRepository;
+
+        public QuizService(IQuizRepository quizRepository, IQuizQuestionRepository quizQuestionRepository, IQuestionService questionService, ISubmitRepository submitRepository, IQuizQuestionAnswerRepository quizQuestionAnswerRepository)
         {
             _quizQuestionRepository = quizQuestionRepository;
             _quizRepository = quizRepository;
             _questionService = questionService;
             _submitRepository = submitRepository;
+            _quizQuestionAnswerRepository = quizQuestionAnswerRepository;
         }
         public async Task<string> AddQuiz(Quiz quiz, List<QuizQuestionDto>? quizQuestions)
         {
@@ -51,6 +54,50 @@ namespace EducationalPlatform.Service.Implementations
 
 
             return "Success";
+        }
+
+        public async Task<string> CloseQuizSubmitAsync(int SubmitId, List<QuizQuestionAnswerDto> quizQuestionAnswerDtos)
+        {
+            try
+            {
+                var submit = await _submitRepository.GetByIdAsync(SubmitId);
+
+                int partialresult = 0;
+
+                foreach (var item in quizQuestionAnswerDtos)
+                {
+                    var question = await _questionService.GetQuestionByIdAsync(item.QuestionId);
+                    if (question != null)
+                    {
+                        if (question.correctAnswerId == item.AnswerId)
+                        {
+                            partialresult++;
+                        }
+
+                        var record = new QuizQuestionAnswer()
+                        {
+                            SubmitId = SubmitId,
+                            QuestionId = item.QuestionId,
+                            AnswerId = item.AnswerId
+                        };
+                        await _quizQuestionAnswerRepository.AddAsync(record);
+                    }
+                }
+                submit.Partialresult = partialresult;
+                submit.EndDate = DateTime.Now;
+
+
+                await _submitRepository.UpdateAsync(submit);
+                return "Success";
+            }
+            catch (Exception ex)
+            {
+                return "Fail";
+
+            }
+
+
+
         }
 
         public Task<string> DeleteQuizById(int id)

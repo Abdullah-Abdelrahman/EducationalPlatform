@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EducationalPlatform.Data.Entities
+﻿namespace EducationalPlatform.Data.Entities
 {
     public class Course
     {
@@ -12,7 +6,7 @@ namespace EducationalPlatform.Data.Entities
         public string Name { get; set; }
         public string Description { get; set; }
 
-       
+        public decimal Price { get; set; }
         public virtual ICollection<Enrollment> Enrollments { get; set; }
 
         public virtual ICollection<Content> Contents { get; set; }
@@ -24,7 +18,7 @@ namespace EducationalPlatform.Data.Entities
         {
             Enrollments = new HashSet<Enrollment>();
             CourseContents = new HashSet<CourseContent>();
-            Contents =new HashSet<Content>();
+            Contents = new HashSet<Content>();
         }
     }
 
