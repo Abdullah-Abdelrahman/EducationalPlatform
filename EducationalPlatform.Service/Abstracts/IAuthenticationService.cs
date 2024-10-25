@@ -6,5 +6,9 @@ namespace EducationalPlatform.Service.Abstracts
     {
 
         public Task<string> GetJWTtoken(AppUser user);
+
+        public Task<string> ConfirmEmail(string userId, string code);
+
+        public Task<string> SendResetPassword(string Email);
     }
 }

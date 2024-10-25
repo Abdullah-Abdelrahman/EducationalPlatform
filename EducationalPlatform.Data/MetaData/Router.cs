@@ -51,9 +51,9 @@
 
             public const string SignIn = prefix + "SignIn";
 
-            public const string Edit = prefix + "Edit";
+            public const string ConfirmEmail = prefix + "ConfirmEmail";
 
-            public const string Delete = prefix + "Delete/{Id}";
+            public const string SendResetPasswordEmail = prefix + "SendResetPasswordEmail";
 
 
         }

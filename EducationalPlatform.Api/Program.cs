@@ -35,7 +35,20 @@ namespace EducationalPlatform.Api
                     );
 
             });
-            builder.Services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDBContext>();
+
+
+            builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
+            {
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireUppercase = true;
+
+                options.User.RequireUniqueEmail = true;
+
+                options.SignIn.RequireConfirmedEmail = true;
+
+
+            }).AddEntityFrameworkStores<ApplicationDBContext>().AddDefaultTokenProviders();
 
             #region my custom Dependency injection
             builder.Services
@@ -53,6 +66,7 @@ namespace EducationalPlatform.Api
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
                 x.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+
             })
            .AddJwtBearer(x =>
            {

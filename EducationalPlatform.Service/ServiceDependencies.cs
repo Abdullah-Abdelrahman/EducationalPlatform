@@ -23,6 +23,7 @@ namespace EducationalPlatform.Service
             services.AddTransient<IPaymentService, PaymentService>();
             services.AddTransient<IEnrollmentService, EnrollmentService>();
             services.AddTransient<IEmailService, EmailService>();
+            services.AddTransient<IAppUserService, AppUserService>();
 
 
 

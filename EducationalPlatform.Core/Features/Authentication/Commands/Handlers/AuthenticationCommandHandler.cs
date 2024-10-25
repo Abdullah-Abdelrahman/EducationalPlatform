@@ -8,7 +8,9 @@ using US = EducationalPlatform.Data.Entities;
 namespace EducationalPlatform.Core.Features.Authentication.Commands.Handlers
 {
     public class AuthenticationCommandHandler : ResponseHandler,
-         IRequestHandler<SignInCommand, Response<string>>
+         IRequestHandler<SignInCommand, Response<string>>,
+         IRequestHandler<ResetPasswordCommand, Response<string>>
+
     {
 
 
@@ -38,12 +40,20 @@ namespace EducationalPlatform.Core.Features.Authentication.Commands.Handlers
             {
                 var result = await _userManager.CheckPasswordAsync(user, request.Password);
 
+
+
                 if (result == false)
                 {
                     return BadRequest<string>("password and Email MissMatch");
                 }
                 else
                 {
+                    if (user.EmailConfirmed == false)
+                    {
+                        return BadRequest<string>("Account is Not Confirmed");
+
+                    }
+
                     //Login
                     await _signInManager.SignInAsync(user, false);
                     // biuld token
@@ -57,6 +67,22 @@ namespace EducationalPlatform.Core.Features.Authentication.Commands.Handlers
             }
 
 
+        }
+
+        public async Task<Response<string>> Handle(ResetPasswordCommand request, CancellationToken cancellationToken)
+        {
+            var result = await _authenticationService.SendResetPassword(request.Email);
+
+            switch (result)
+            {
+                case "Success": return Success<string>(result);
+                case "UserNotFound": return NotFound<string>(result);
+                case "ErrorInUpdateUserCode": return BadRequest<string>(result);
+
+
+            }
+
+            return BadRequest<string>(result);
         }
     }
 }

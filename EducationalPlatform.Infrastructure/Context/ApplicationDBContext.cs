@@ -8,13 +8,13 @@ namespace EducationalPlatform.Infrastructure.Data
     public class ApplicationDBContext : IdentityDbContext<AppUser>
     {
 
-
+        //private readonly IEncryptionProvider _encryptionProvider;
         public ApplicationDBContext() { }
 
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options) : base(options)
         {
 
-
+            //_encryptionProvider = new GenerateEncryptionProvider("dthfhgwt365d765dhgfyt46cghfo97hgk05dhft46dc");
         }
 
         #region Dbsets
@@ -55,6 +55,8 @@ namespace EducationalPlatform.Infrastructure.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            // modelBuilder.UseEncryption(_encryptionProvider);
             modelBuilder.Entity<AppUser>(entity =>
             {
 

@@ -10,9 +10,9 @@ E:\All_of_my_projrcts\EducationalPlatform\EducationalPlatform.Service\obj\Debug\
 E:\All_of_my_projrcts\EducationalPlatform\EducationalPlatform.Service\obj\Debug\net8.0\EducationalPlatform.Service.AssemblyInfoInputs.cache
 E:\All_of_my_projrcts\EducationalPlatform\EducationalPlatform.Service\obj\Debug\net8.0\EducationalPlatform.Service.AssemblyInfo.cs
 E:\All_of_my_projrcts\EducationalPlatform\EducationalPlatform.Service\obj\Debug\net8.0\EducationalPlatform.Service.csproj.CoreCompileInputs.cache
+E:\All_of_my_projrcts\EducationalPlatform\EducationalPlatform.Service\obj\Debug\net8.0\EducationalPlatform.Service.sourcelink.json
 E:\All_of_my_projrcts\EducationalPlatform\EducationalPlatform.Service\obj\Debug\net8.0\Educatio.CC23CE39.Up2Date
 E:\All_of_my_projrcts\EducationalPlatform\EducationalPlatform.Service\obj\Debug\net8.0\EducationalPlatform.Service.dll
 E:\All_of_my_projrcts\EducationalPlatform\EducationalPlatform.Service\obj\Debug\net8.0\refint\EducationalPlatform.Service.dll
 E:\All_of_my_projrcts\EducationalPlatform\EducationalPlatform.Service\obj\Debug\net8.0\EducationalPlatform.Service.pdb
 E:\All_of_my_projrcts\EducationalPlatform\EducationalPlatform.Service\obj\Debug\net8.0\ref\EducationalPlatform.Service.dll
-E:\All_of_my_projrcts\EducationalPlatform\EducationalPlatform.Service\obj\Debug\net8.0\EducationalPlatform.Service.sourcelink.json

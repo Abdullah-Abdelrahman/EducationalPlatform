@@ -92,6 +92,9 @@ namespace EducationalPlatform.Infrastructure.Migrations
                     b.Property<decimal>("Balance")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -455,13 +458,13 @@ namespace EducationalPlatform.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "c950996f-093c-468d-b92f-1d4984bb8437",
+                            Id = "3a42ff99-dcd0-4fa3-8a12-24d4214311b2",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "3a91c9a3-94bb-46cf-974b-74cb254f44e7",
+                            Id = "22b08c56-276e-4d7e-8a33-34842b7c7cbe",
                             Name = "User",
                             NormalizedName = "USER"
                         });

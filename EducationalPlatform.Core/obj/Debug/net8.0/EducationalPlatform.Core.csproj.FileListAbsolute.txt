@@ -12,9 +12,9 @@ E:\All_of_my_projrcts\EducationalPlatform\EducationalPlatform.Core\obj\Debug\net
 E:\All_of_my_projrcts\EducationalPlatform\EducationalPlatform.Core\obj\Debug\net8.0\EducationalPlatform.Core.AssemblyInfoInputs.cache
 E:\All_of_my_projrcts\EducationalPlatform\EducationalPlatform.Core\obj\Debug\net8.0\EducationalPlatform.Core.AssemblyInfo.cs
 E:\All_of_my_projrcts\EducationalPlatform\EducationalPlatform.Core\obj\Debug\net8.0\EducationalPlatform.Core.csproj.CoreCompileInputs.cache
+E:\All_of_my_projrcts\EducationalPlatform\EducationalPlatform.Core\obj\Debug\net8.0\EducationalPlatform.Core.sourcelink.json
 E:\All_of_my_projrcts\EducationalPlatform\EducationalPlatform.Core\obj\Debug\net8.0\Educatio.E3A567D4.Up2Date
 E:\All_of_my_projrcts\EducationalPlatform\EducationalPlatform.Core\obj\Debug\net8.0\EducationalPlatform.Core.dll
 E:\All_of_my_projrcts\EducationalPlatform\EducationalPlatform.Core\obj\Debug\net8.0\refint\EducationalPlatform.Core.dll
 E:\All_of_my_projrcts\EducationalPlatform\EducationalPlatform.Core\obj\Debug\net8.0\EducationalPlatform.Core.pdb
 E:\All_of_my_projrcts\EducationalPlatform\EducationalPlatform.Core\obj\Debug\net8.0\ref\EducationalPlatform.Core.dll
-E:\All_of_my_projrcts\EducationalPlatform\EducationalPlatform.Core\obj\Debug\net8.0\EducationalPlatform.Core.sourcelink.json

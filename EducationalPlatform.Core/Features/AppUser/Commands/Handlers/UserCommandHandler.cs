@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using EducationalPlatform.Core.Bases;
 using EducationalPlatform.Core.Features.AppUser.Commands.Models;
+using EducationalPlatform.Service.Abstracts;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 
@@ -23,11 +24,13 @@ namespace EducationalPlatform.Core.Features.AppUser.Commands.Handlers
     {
 
         private readonly IMapper _mapper;
+        private readonly IAppUserService _appUserService;
+
         private readonly UserManager<US.AppUser> _userManager;
 
-        public UserCommandHandler(IMapper mapper, UserManager<US.AppUser> userManager)
+        public UserCommandHandler(IMapper mapper, IAppUserService appUserService, UserManager<US.AppUser> userManager)
         {
-
+            _appUserService = appUserService;
             _userManager = userManager;
             _mapper = mapper;
         }
@@ -37,51 +40,18 @@ namespace EducationalPlatform.Core.Features.AppUser.Commands.Handlers
 
             var user = _mapper.Map<AddUserCommand, US.AppUser>(request);
 
+            var result = await _appUserService.AddUserAsync(user, request.Password);
 
-            //if email Exist before
-
-            var Emailresult = await _userManager.FindByEmailAsync(user.Email);
-
-            if (Emailresult == null)
+            switch (result)
             {
-                var UserNameresult = await _userManager.FindByNameAsync(user.UserName);
+                case "Success": return Success<string>(result);
+                case "EmailAlredyExist": return BadRequest<string>(result);
+                case "UserNameAlredyExist": return BadRequest<string>(result);
+                case "UserCreatedSuccessfullyButNotAddedTo[user]Role": return BadRequest<string>(result);
 
-                if (UserNameresult == null)
-                {
-
-                    var result = await _userManager.CreateAsync(user, request.Password);
-
-                    if (result == IdentityResult.Success)
-                    {
-                        var addRoleResult = await _userManager.AddToRoleAsync(user, "User");
-
-                        if (addRoleResult == IdentityResult.Success)
-                        {
-                            return Created<string>("User created Successfuly and added to [user] role");
-
-                        }
-                        else
-                        {
-                            return Created<string>("User created Successfuly but not added to [user] role");
-                        }
-                    }
-                    else
-                    {
-                        return BadRequest<string>("Somthing Bad happend");
-                    }
-
-                }
-                else
-                {
-                    return BadRequest<string>("userName Alredy Exist");
-                }
-            }
-            else
-            {
-                return BadRequest<string>("Email Alredy Exist");
             }
 
-
+            return BadRequest<string>(result);
         }
 
         public async Task<Response<string>> Handle(EditUserCommand request, CancellationToken cancellationToken)

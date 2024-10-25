@@ -13,7 +13,7 @@ namespace EducationalPlatform.Service.Implementations
         {
             _configuration = configuration;
         }
-        public async Task<string> SendEmailAsync(string email, string Message)
+        public async Task<string> SendEmailAsync(string email, string Message, string? reason)
         {
             try
             {
@@ -34,7 +34,7 @@ namespace EducationalPlatform.Service.Implementations
                     };
                     message.From.Add(new MailboxAddress("Tcno Team", _configuration.GetSection("Email")["FromEmail"]));
                     message.To.Add(new MailboxAddress("testing", email));
-                    message.Subject = "new Contact Submited Data";
+                    message.Subject = reason == null ? "Default Subject" : reason;
                     await client.SendAsync(message);
                     await client.DisconnectAsync(true);
                 }

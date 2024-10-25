@@ -9,6 +9,9 @@ namespace EducationalPlatform.Data.Entities
 
         public decimal Balance { get; set; }
 
+        //[EncryptColumn]
+        public string? Code { get; set; }
+
         public ICollection<Enrollment> Enrollments { get; set; }
         public ICollection<Payment> Payments { get; set; }
 
