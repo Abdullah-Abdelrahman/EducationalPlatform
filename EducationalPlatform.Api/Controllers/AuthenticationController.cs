@@ -38,5 +38,14 @@ namespace EducationalPlatform.Api.Controllers
             return NewResult(response);
         }
 
+
+        [HttpGet(Router.AuthenticationRouter.CanResetPassword)]
+        public async Task<IActionResult> CanResetPassword([FromQuery] CanResetPasswordQuery command)
+        {
+            var response = await Mediator.Send(command);
+
+            return NewResult(response);
+        }
+
     }
 }

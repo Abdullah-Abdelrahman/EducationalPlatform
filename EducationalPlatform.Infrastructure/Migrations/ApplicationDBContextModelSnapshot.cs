@@ -378,13 +378,13 @@ namespace EducationalPlatform.Infrastructure.Migrations
                     b.Property<int>("SubmitId")
                         .HasColumnType("int");
 
-                    b.Property<int>("AnswerId")
-                        .HasColumnType("int");
-
                     b.Property<int>("QuestionId")
                         .HasColumnType("int");
 
-                    b.HasKey("SubmitId");
+                    b.Property<int>("AnswerId")
+                        .HasColumnType("int");
+
+                    b.HasKey("SubmitId", "QuestionId");
 
                     b.HasIndex("AnswerId");
 
@@ -458,13 +458,13 @@ namespace EducationalPlatform.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "3a42ff99-dcd0-4fa3-8a12-24d4214311b2",
+                            Id = "b1c4919c-2361-4781-9bb9-044be9077a8a",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "22b08c56-276e-4d7e-8a33-34842b7c7cbe",
+                            Id = "cf9b7f20-30ed-46df-ab2b-2e3137f1ea51",
                             Name = "User",
                             NormalizedName = "USER"
                         });

@@ -1,6 +1,7 @@
 ﻿using EducationalPlatform.Core.Bases;
 using EducationalPlatform.Data.Dto;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 
 namespace EducationalPlatform.Core.Features.Courses.Commands.Models
 {
@@ -10,8 +11,10 @@ namespace EducationalPlatform.Core.Features.Courses.Commands.Models
         public string Name { get; set; }
 
         public string Description { get; set; }
+        //Image
+        public IFormFile? ImageFile { get; set; }
 
-        public List<CourseContentDto>? Content { get; set; }
+        public List<CourseContentDto>? Contents { get; set; }
 
 
     }

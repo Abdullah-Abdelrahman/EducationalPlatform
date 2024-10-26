@@ -1,11 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EducationalPlatform.Data.Entities
 {
     public class QuizQuestionAnswer
     {
-        [Key]
+
         public int SubmitId { get; set; }
 
         public int QuestionId { get; set; }

@@ -37,9 +37,18 @@ namespace EducationalPlatform.Core.Features.Content.Commands.Handlers
             }
         }
 
-        public Task<Response<string>> Handle(SubmitQuizCommand request, CancellationToken cancellationToken)
+        public async Task<Response<string>> Handle(SubmitQuizCommand request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var result = await _quizService.CloseQuizSubmitAsync(request.SubmitId, request.quizQuestionAnswers);
+            if (result == "Success")
+            {
+                return Created<string>("Closed successfuly");
+            }
+            else
+            {
+                return BadRequest<string>(result);
+            }
+
         }
     }
 }

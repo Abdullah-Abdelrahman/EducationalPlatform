@@ -1,10 +1,5 @@
 ﻿using EducationalPlatform.Core.Features.Courses.Queries.Results;
 using EducationalPlatform.Data.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EducationalPlatform.Core.Mapping.Courses
 {
@@ -13,7 +8,7 @@ namespace EducationalPlatform.Core.Mapping.Courses
 
         public void GetCourseByIdMapping()
         {
-            CreateMap<Course, GetCourseByIdResponse>().ForMember(destnation => destnation.Description, opt => opt.MapFrom(src => src.Description));
+            CreateMap<Course, GetCourseByIdResponse>().ForMember(destnation => destnation.Description, opt => opt.MapFrom(src => src.Description)).ForMember(destnation => destnation.ContentsId, opt => opt.MapFrom(src => src.CourseContents.Select(c => c.ContentId)));
         }
     }
 }

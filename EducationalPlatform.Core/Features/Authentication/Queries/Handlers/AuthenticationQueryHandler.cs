@@ -6,7 +6,9 @@ using MediatR;
 namespace EducationalPlatform.Core.Features.Authentication.Queries.Handlers
 {
     public class AuthenticationQueryHandler : ResponseHandler,
-         IRequestHandler<ConfirmEmailQuery, Response<string>>
+         IRequestHandler<ConfirmEmailQuery, Response<string>>,
+         IRequestHandler<CanResetPasswordQuery, Response<string>>
+
     {
 
         private readonly IAuthenticationService _authenticationService;
@@ -23,6 +25,20 @@ namespace EducationalPlatform.Core.Features.Authentication.Queries.Handlers
                 return Success<string>(result);
             }
             return BadRequest<string>(result);
+        }
+
+        public async Task<Response<string>> Handle(CanResetPasswordQuery request, CancellationToken cancellationToken)
+        {
+            var result = await _authenticationService.ResetPassword(request.Email, request.code);
+
+            if (result == "Success")
+            {
+                return Success<string>(result);
+            }
+            else
+            {
+                return BadRequest<string>(result);
+            }
         }
     }
 }

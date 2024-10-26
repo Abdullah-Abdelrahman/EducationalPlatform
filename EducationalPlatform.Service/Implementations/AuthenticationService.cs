@@ -24,9 +24,9 @@ namespace EducationalPlatform.Service.Implementations
             _emailService = emailService;
         }
 
-        public async Task<string> ConfirmEmail(string userId, string code)
+        public async Task<string> ConfirmEmail(string? userId, string? code)
         {
-            var user = await _userManager.FindByIdAsync(userId);
+            var user = await _userManager.FindByIdAsync(userId.ToString());
             if (user == null)
             {
                 return $"No user With id ={userId}";
@@ -70,6 +70,25 @@ namespace EducationalPlatform.Service.Implementations
 
 
             return await Task.FromResult(accessToken);
+        }
+
+        public async Task<string> ResetPassword(string Email, string code)
+        {
+
+            var user = await _userManager.FindByEmailAsync(Email);
+            if (user == null)
+            {
+                return "UserNotFound";
+            }
+
+
+            if (user.Code != code)
+            {
+                return "CodeDoesNotMatch";
+            }
+
+            return "Success";
+
         }
 
         public async Task<string> SendResetPassword(string Email)

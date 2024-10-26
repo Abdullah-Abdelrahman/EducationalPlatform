@@ -77,6 +77,11 @@ namespace EducationalPlatform.Infrastructure.Data
             });
 
 
+            modelBuilder.Entity<QuizQuestionAnswer>(entity =>
+            {
+                entity.HasKey(c => new { c.SubmitId, c.QuestionId });
+
+            });
 
 
 

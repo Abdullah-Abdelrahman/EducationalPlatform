@@ -31,7 +31,7 @@ namespace EducationalPlatform.Api.Controllers
 
         [HttpPost(Router.CourseRouter.Create)]
         //[Authorize(Policy = "CreateCourse")]
-        public async Task<IActionResult> CreateCourse([FromBody] AddCourseCommand command)
+        public async Task<IActionResult> CreateCourse([FromForm] AddCourseCommand command)
         {
             var response = await Mediator.Send(command);
 

@@ -47,7 +47,7 @@
 
             public const string GetList = prefix + "List";
 
-            public const string GetById = prefix + "{Id}";
+            public const string CanResetPassword = prefix + "CanResetPassword";
 
             public const string SignIn = prefix + "SignIn";
 

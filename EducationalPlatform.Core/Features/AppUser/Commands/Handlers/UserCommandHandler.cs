@@ -121,26 +121,23 @@ namespace EducationalPlatform.Core.Features.AppUser.Commands.Handlers
 
         public async Task<Response<string>> Handle(ChangeUserPasswordCommand request, CancellationToken cancellationToken)
         {
-            var user = await _userManager.FindByIdAsync(request.UserId);
 
 
-            if (user == null)
+            var result = await _appUserService.ChangePasswordAsync(request.Email, request.NewPassword);
+
+
+            if (result == "UserNotFound")
             {
-                return NotFound<string>($"there is no user with id ={request.UserId}");
+                return NotFound<string>($"there is no user with Email ={request.Email}");
             }
-            else
+            else if (result == "Success")
             {
-                var result = await _userManager.ChangePasswordAsync(user, request.CurrentPassword, request.NewPassword);
+                return Success<string>("Password Updateted successfuly");
 
-                if (result == IdentityResult.Success)
-                {
-                    return Success<string>("Password Updateted successfuly");
-                }
-                else
-                {
-                    return BadRequest<string>("Somthing bad happend");
-                }
             }
+            return BadRequest<string>("Somthing bad happend");
+
+
         }
     }
 }

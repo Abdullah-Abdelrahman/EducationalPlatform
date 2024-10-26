@@ -52,12 +52,12 @@ namespace EducationalPlatform.Service.Implementations
                             {
                                 //send Confirm Email
                                 var code = await _userManager.GenerateEmailConfirmationTokenAsync(appUser);
-
+                                var encodedCode = Uri.EscapeDataString(code);
                                 var requestAccessor = _contextAccessor.HttpContext.Request;
-                                var returnUrl = requestAccessor.Scheme + "://" + requestAccessor.Host + $"/Api/Authentication/ConfirmEmail?userId={appUser.Id}&code={code}";
+                                var returnUrl = requestAccessor.Scheme + "://" + requestAccessor.Host + $"/Api/Authentication/ConfirmEmail?userId={appUser.Id}&code={encodedCode}";
                                 //send the confirmation email
 
-                                var message = $"To confirm Your Email Click the link <a href='{returnUrl}'></a>";
+                                var message = $"To confirm Your Email Click the link <a href='{returnUrl}'>Go</a>";
                                 await _emailService.SendEmailAsync(appUser.Email, message, "Confirm Email");
 
 
@@ -98,6 +98,32 @@ namespace EducationalPlatform.Service.Implementations
                 return "Falied";
             }
 
+
+        }
+
+        public async Task<string> ChangePasswordAsync(string Email, string password)
+        {
+            var transact = _dbContext.Database.BeginTransaction();
+            try
+            {
+                var user = await _userManager.FindByEmailAsync(Email);
+
+                if (user == null)
+                {
+                    return "UserNotFound";
+                }
+
+
+                await _userManager.RemovePasswordAsync(user);
+                await _userManager.AddPasswordAsync(user, password);
+                await transact.CommitAsync();
+                return "Success";
+            }
+            catch
+            {
+                await transact.RollbackAsync();
+                return "Falied";
+            }
 
         }
     }

@@ -68,7 +68,7 @@ namespace EducationalPlatform.Service.Implementations
 
         public async Task<Course> GetCourseByIdAsync(int id)
         {
-            var course = _courseRepository.GetTableNoTracking().Where(x => x.CourseId == id).Include(x => x.Contents).SingleOrDefault();
+            var course = _courseRepository.GetTableNoTracking().Where(x => x.CourseId == id).Include(x => x.Contents).Include(c => c.CourseContents).SingleOrDefault();
 
             return course;
         }
