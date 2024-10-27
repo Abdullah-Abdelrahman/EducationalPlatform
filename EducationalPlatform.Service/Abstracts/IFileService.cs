@@ -2,9 +2,12 @@
 
 namespace EducationalPlatform.Service.Abstracts
 {
-    public interface IFileUploadService
+    public interface IFileService
     {
 
         public Task<string> UploadFile(IFormFile? file, string WebRootPath);
+
+        public Task<byte[]> GetFileAsync(string fileName);
+
     }
 }

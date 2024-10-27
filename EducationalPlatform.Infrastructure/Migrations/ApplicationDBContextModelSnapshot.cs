@@ -205,6 +205,9 @@ namespace EducationalPlatform.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -458,13 +461,13 @@ namespace EducationalPlatform.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "b1c4919c-2361-4781-9bb9-044be9077a8a",
+                            Id = "74aeccbd8e59",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "cf9b7f20-30ed-46df-ab2b-2e3137f1ea51",
+                            Id = "2431b281a635",
                             Name = "User",
                             NormalizedName = "USER"
                         });

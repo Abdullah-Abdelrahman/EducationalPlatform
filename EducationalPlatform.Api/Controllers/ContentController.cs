@@ -2,7 +2,6 @@
 using EducationalPlatform.Core.Features.Content.Commands.Models;
 using EducationalPlatform.Core.Features.Content.Queries.Models;
 using EducationalPlatform.Data.MetaData;
-using EducationalPlatform.Service.Abstracts;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EducationalPlatform.Api.Controllers
@@ -12,11 +11,11 @@ namespace EducationalPlatform.Api.Controllers
     public class ContentController : AppControllerBase
     {
 
-        private readonly IQuestionService _questionService;
 
-        public ContentController(IQuestionService questionService, IWebHostEnvironment webHostEnvironment)
+
+        public ContentController(IWebHostEnvironment webHostEnvironment)
         {
-            _questionService = questionService;
+            //_questionService = questionService;
             _webHost = webHostEnvironment;
 
         }

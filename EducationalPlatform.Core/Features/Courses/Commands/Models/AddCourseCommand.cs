@@ -14,6 +14,9 @@ namespace EducationalPlatform.Core.Features.Courses.Commands.Models
         //Image
         public IFormFile? ImageFile { get; set; }
 
+
+        public string? WebRootPath { get; set; }
+
         public List<CourseContentDto>? Contents { get; set; }
 
 

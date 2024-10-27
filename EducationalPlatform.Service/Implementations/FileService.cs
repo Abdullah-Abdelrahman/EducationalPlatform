@@ -4,8 +4,26 @@ using Microsoft.AspNetCore.Http;
 
 namespace EducationalPlatform.Service.Implementations
 {
-    public class FileUploadService : IFileUploadService
+    public class FileService : IFileService
     {
+        private readonly HttpClient _httpClient;
+
+        public FileService(HttpClient httpClient)
+        {
+            _httpClient = httpClient;
+        }
+        public async Task<byte[]> GetFileAsync(string fileName)
+        {
+            var response = await _httpClient.GetAsync($"api/File/{fileName}");
+            if (response.IsSuccessStatusCode)
+            {
+                return await response.Content.ReadAsByteArrayAsync();
+            }
+
+            // Optionally, handle errors based on status codes
+            // throw new HttpRequestException("File could not be retrieved.");
+            return null;
+        }
 
         //Create an file for the image and creat an uniqe name for it
         public async Task<string> UploadFile(IFormFile? file, string WebRootPath)

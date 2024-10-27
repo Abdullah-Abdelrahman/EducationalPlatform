@@ -10,6 +10,10 @@ namespace EducationalPlatform.Api.Controllers
     [ApiController]
     public class CourseController : AppControllerBase
     {
+        public CourseController(IWebHostEnvironment webHostEnvironment)
+        {
+            _webHost = webHostEnvironment;
+        }
 
         [HttpGet(Router.CourseRouter.GetList)]
         public async Task<IActionResult> GetCoursesList()
@@ -33,6 +37,7 @@ namespace EducationalPlatform.Api.Controllers
         //[Authorize(Policy = "CreateCourse")]
         public async Task<IActionResult> CreateCourse([FromForm] AddCourseCommand command)
         {
+            command.WebRootPath = _webHost.ContentRootPath;
             var response = await Mediator.Send(command);
 
             return NewResult(response);

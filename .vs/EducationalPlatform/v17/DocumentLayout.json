@@ -1,16 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "E:\\All_of_my_projrcts\\EducationalPlatform\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{4A60A851-90E8-4270-AFF3-451BBD8779C2}|EducationalPlatform.Core\\EducationalPlatform.Core.csproj|e:\\all_of_my_projrcts\\educationalplatform\\educationalplatform.core\\mapping\\courses\\commandmapping\\addcoursemapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4A60A851-90E8-4270-AFF3-451BBD8779C2}|EducationalPlatform.Core\\EducationalPlatform.Core.csproj|solutionrelative:educationalplatform.core\\mapping\\courses\\commandmapping\\addcoursemapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4A60A851-90E8-4270-AFF3-451BBD8779C2}|EducationalPlatform.Core\\EducationalPlatform.Core.csproj|e:\\all_of_my_projrcts\\educationalplatform\\educationalplatform.core\\features\\courses\\commands\\handlers\\coursecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4A60A851-90E8-4270-AFF3-451BBD8779C2}|EducationalPlatform.Core\\EducationalPlatform.Core.csproj|solutionrelative:educationalplatform.core\\features\\courses\\commands\\handlers\\coursecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -18,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -27,32 +18,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{fbcae063-e2c0-4ab1-a516-996ea3dafb72}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AddCourseMapping.cs",
-              "DocumentMoniker": "E:\\All_of_my_projrcts\\EducationalPlatform\\EducationalPlatform.Core\\Mapping\\Courses\\CommandMapping\\AddCourseMapping.cs",
-              "RelativeDocumentMoniker": "EducationalPlatform.Core\\Mapping\\Courses\\CommandMapping\\AddCourseMapping.cs",
-              "ToolTip": "E:\\All_of_my_projrcts\\EducationalPlatform\\EducationalPlatform.Core\\Mapping\\Courses\\CommandMapping\\AddCourseMapping.cs",
-              "RelativeToolTip": "EducationalPlatform.Core\\Mapping\\Courses\\CommandMapping\\AddCourseMapping.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAADVAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-26T21:44:15.135Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CourseCommandHandler.cs",
-              "DocumentMoniker": "E:\\All_of_my_projrcts\\EducationalPlatform\\EducationalPlatform.Core\\Features\\Courses\\Commands\\Handlers\\CourseCommandHandler.cs",
-              "RelativeDocumentMoniker": "EducationalPlatform.Core\\Features\\Courses\\Commands\\Handlers\\CourseCommandHandler.cs",
-              "ToolTip": "E:\\All_of_my_projrcts\\EducationalPlatform\\EducationalPlatform.Core\\Features\\Courses\\Commands\\Handlers\\CourseCommandHandler.cs",
-              "RelativeToolTip": "EducationalPlatform.Core\\Features\\Courses\\Commands\\Handlers\\CourseCommandHandler.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAMwBgAAABVAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-26T21:43:26.128Z",
-              "EditorCaption": ""
             }
           ]
         }

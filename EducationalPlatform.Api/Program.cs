@@ -5,6 +5,8 @@ using EducationalPlatform.Data.Entities;
 using EducationalPlatform.Infrastructure;
 using EducationalPlatform.Infrastructure.Data;
 using EducationalPlatform.Service;
+using EducationalPlatform.Service.Abstracts;
+using EducationalPlatform.Service.Implementations;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -140,6 +142,12 @@ namespace EducationalPlatform.Api
                 });
 
             });
+
+            builder.Services.AddHttpClient<IFileService, FileService>(client =>
+            {
+                client.BaseAddress = new Uri("http://localhost:5049/"); // Use the base URL of EducationalPlatform.Api
+            });
+
 
 
             //Build

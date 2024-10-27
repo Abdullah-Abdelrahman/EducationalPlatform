@@ -2,6 +2,7 @@
 using EducationalPlatform.Data.Entities;
 using EducationalPlatform.Infrastructure.Abstracts;
 using EducationalPlatform.Service.Abstracts;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
 namespace EducationalPlatform.Service.Implementations
@@ -13,14 +14,18 @@ namespace EducationalPlatform.Service.Implementations
         private readonly ICourseContentRepository _courseContentRepository;
 
         private readonly IContentService _contentService;
-        public CourseService(ICourseRepository courseRepository, ICourseContentRepository courseContentRepository, IContentService contentService)
+
+        private readonly IFileService _FileService;
+
+        public CourseService(ICourseRepository courseRepository, ICourseContentRepository courseContentRepository, IContentService contentService, IFileService FileService)
         {
             _courseContentRepository = courseContentRepository;
             _courseRepository = courseRepository;
             _contentService = contentService;
+            _FileService = FileService;
         }
 
-        public async Task<string> AddCourse(Course course, List<CourseContentDto> contentDto)
+        public async Task<string> AddCourse(Course course, List<CourseContentDto> contentDto, IFormFile? ImageFile, string? webRootPath)
         {
             //Check if there is a Course with the same Name in the DB
 
@@ -33,24 +38,28 @@ namespace EducationalPlatform.Service.Implementations
             }
             else
             {
-
+                course.ImagePath = (await _FileService.UploadFile(ImageFile, webRootPath));
                 var newCourse = await _courseRepository.AddAsync(course);
 
                 if (newCourse != null)
                 {
-                    foreach (var content in contentDto)
+                    if (contentDto != null)
                     {
-                        if ((await _contentService.ExistByIdAsync(content.ContentId)))
+                        foreach (var content in contentDto)
                         {
-                            await _courseContentRepository.AddAsync(new CourseContent()
+                            if ((await _contentService.ExistByIdAsync(content.ContentId)))
                             {
-                                CourseId = newCourse.CourseId,
-                                ContentId = content.ContentId,
+                                await _courseContentRepository.AddAsync(new CourseContent()
+                                {
+                                    CourseId = newCourse.CourseId,
+                                    ContentId = content.ContentId,
 
-                            });
+                                });
+                            }
+
                         }
-
                     }
+
                 }
 
 
@@ -69,13 +78,18 @@ namespace EducationalPlatform.Service.Implementations
         public async Task<Course> GetCourseByIdAsync(int id)
         {
             var course = _courseRepository.GetTableNoTracking().Where(x => x.CourseId == id).Include(x => x.Contents).Include(c => c.CourseContents).SingleOrDefault();
-
+            course.ImageFile = await _FileService.GetFileAsync(course.ImagePath);
             return course;
         }
 
         public async Task<List<Course>> GetCoursesListAsync()
         {
-            return await _courseRepository.GetCoursesListAsync();
+            var Courses = await _courseRepository.GetCoursesListAsync();
+            foreach (var course in Courses)
+            {
+                course.ImageFile = await _FileService.GetFileAsync(course.ImagePath);
+            }
+            return Courses;
         }
 
         public async Task<string> UpdateAsync(Course course)

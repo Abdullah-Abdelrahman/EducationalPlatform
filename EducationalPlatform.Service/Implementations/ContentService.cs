@@ -10,12 +10,13 @@ namespace EducationalPlatform.Service.Implementations
     {
         private readonly IContentRepository _contentRepository;
 
-        private readonly IFileUploadService _uploadService;
+        private readonly IFileService _FileService;
 
-        public ContentService(IContentRepository contentRepository, IFileUploadService uploadService)
+        public ContentService(IContentRepository contentRepository, IFileService FileService)
         {
+
             _contentRepository = contentRepository;
-            _uploadService = uploadService;
+            _FileService = FileService;
         }
         public async Task<string> AddGeneralContent(AddGeneralContentRequest request)
         {
@@ -45,7 +46,7 @@ namespace EducationalPlatform.Service.Implementations
                     CreatedAt = DateTime.Now,
                     ContentType = request.ContentType,
                     File = request.ContentFile,
-                    PathName = (await _uploadService.UploadFile(request.ContentFile, request.PathName))
+                    PathName = (await _FileService.UploadFile(request.ContentFile, request.PathName))
                 };
 
                 var result = await _contentRepository.AddBookAsync(newBook);
@@ -163,10 +164,28 @@ namespace EducationalPlatform.Service.Implementations
                     response.CreatedAt = content.CreatedAt;
                     response.ContentType = content.ContentType;
 
+
+
                     if (content.ContentType == "Book")
                     {
                         var book = await _contentRepository.GetBookByIdAsync(content.ContentId);
+
                         response.PathName = book.PathName;
+
+                        if (response.PathName != null)
+                        {
+                            var Fileresponse = await _FileService.GetFileAsync(response.PathName);
+                            if (Fileresponse != null)
+                            {
+                                response.formFile = Fileresponse;
+
+                            }
+                            else
+                            {
+                                // Handle error, for example, return null or throw an exception
+                                return null;
+                            }
+                        }
 
 
                     }

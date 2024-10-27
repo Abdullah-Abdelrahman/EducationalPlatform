@@ -13,6 +13,9 @@
 
         public string ContentType { get; set; }
 
+
+        public byte[]? formFile { get; set; }
+
         //For video only
 
         public string? Url { get; set; }

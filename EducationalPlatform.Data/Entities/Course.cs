@@ -1,4 +1,6 @@
-﻿namespace EducationalPlatform.Data.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace EducationalPlatform.Data.Entities
 {
     public class Course
     {
@@ -14,8 +16,8 @@
         public virtual ICollection<Content> Contents { get; set; }
         public virtual ICollection<CourseContent> CourseContents { get; set; }
 
-
-
+        [NotMapped]
+        public byte[] ImageFile { get; set; }
         public Course()
         {
             Enrollments = new HashSet<Enrollment>();

@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-
-namespace EducationalPlatform.Core.Features.Courses.Queries.Results
+﻿namespace EducationalPlatform.Core.Features.Courses.Queries.Results
 {
     public class GetCoursesResponse
     {
@@ -12,7 +10,7 @@ namespace EducationalPlatform.Core.Features.Courses.Queries.Results
         public string Description { get; set; }
 
         //Image
-        public IFormFile? ImageFile { get; set; }
+        public byte[]? ImageFile { get; set; }
 
     }
 }
