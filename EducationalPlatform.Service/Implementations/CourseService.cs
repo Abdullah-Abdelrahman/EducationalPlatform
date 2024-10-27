@@ -1,5 +1,4 @@
-﻿using EducationalPlatform.Data.Dto;
-using EducationalPlatform.Data.Entities;
+﻿using EducationalPlatform.Data.Entities;
 using EducationalPlatform.Infrastructure.Abstracts;
 using EducationalPlatform.Service.Abstracts;
 using Microsoft.AspNetCore.Http;
@@ -25,7 +24,7 @@ namespace EducationalPlatform.Service.Implementations
             _FileService = FileService;
         }
 
-        public async Task<string> AddCourse(Course course, List<CourseContentDto> contentDto, IFormFile? ImageFile, string? webRootPath)
+        public async Task<string> AddCourse(Course course, List<int>? contentDto, IFormFile? ImageFile, string? webRootPath)
         {
             //Check if there is a Course with the same Name in the DB
 
@@ -45,14 +44,14 @@ namespace EducationalPlatform.Service.Implementations
                 {
                     if (contentDto != null)
                     {
-                        foreach (var content in contentDto)
+                        foreach (var contentId in contentDto)
                         {
-                            if ((await _contentService.ExistByIdAsync(content.ContentId)))
+                            if ((await _contentService.ExistByIdAsync(contentId)))
                             {
                                 await _courseContentRepository.AddAsync(new CourseContent()
                                 {
                                     CourseId = newCourse.CourseId,
-                                    ContentId = content.ContentId,
+                                    ContentId = contentId,
 
                                 });
                             }

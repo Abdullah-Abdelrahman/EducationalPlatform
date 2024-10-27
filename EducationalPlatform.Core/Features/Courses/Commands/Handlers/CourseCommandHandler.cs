@@ -22,7 +22,7 @@ namespace EducationalPlatform.Core.Features.Courses.Commands.Handlers
         public async Task<Response<string>> Handle(AddCourseCommand request, CancellationToken cancellationToken)
         {
             var coursMapper = _mapper.Map<Course>(request);
-            var result = await _courseService.AddCourse(coursMapper, request.Contents, request.ImageFile, request.WebRootPath);
+            var result = await _courseService.AddCourse(coursMapper, request.ContentsId, request.ImageFile, request.WebRootPath);
 
             if (result == "Exist")
             {

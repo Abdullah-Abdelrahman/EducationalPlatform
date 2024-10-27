@@ -1,7 +1,7 @@
 ﻿using EducationalPlatform.Core.Bases;
-using EducationalPlatform.Data.Dto;
 using MediatR;
 using Microsoft.AspNetCore.Http;
+using System.Text.Json.Serialization;
 
 namespace EducationalPlatform.Core.Features.Courses.Commands.Models
 {
@@ -11,13 +11,14 @@ namespace EducationalPlatform.Core.Features.Courses.Commands.Models
         public string Name { get; set; }
 
         public string Description { get; set; }
+
         //Image
         public IFormFile? ImageFile { get; set; }
 
-
+        [JsonIgnore]
         public string? WebRootPath { get; set; }
 
-        public List<CourseContentDto>? Contents { get; set; }
+        public List<int>? ContentsId { get; set; }
 
 
     }
